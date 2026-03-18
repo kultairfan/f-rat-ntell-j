@@ -37,9 +37,12 @@ public class BaseClass {
 			break;
 
 		}
+		
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT_TIME));
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("document.style.zoom='50%'");
 		String url = ConfigsReader.getProperty("url");
 		driver.get(url);
 

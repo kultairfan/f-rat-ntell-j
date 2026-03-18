@@ -129,6 +129,7 @@ public class CommonMethods extends PageInitializer{
 		try 
 		{
 			Alert alert = driver.switchTo().alert();
+		
 			alert.dismiss();
 		}
 		catch (NoAlertPresentException e) 

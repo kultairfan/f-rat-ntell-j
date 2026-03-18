@@ -12,13 +12,13 @@ import io.cucumber.junit.CucumberOptions;
 		features = "src/test/resources/features/",
 		glue = "com.macfit.steps",
 		
-		dryRun = false,
+		dryRun = true,
 
 		
 		monochrome = true,
 
 		
-		tags = "@ela",
+		tags = "@Webform",
 
 		plugin = {
 				

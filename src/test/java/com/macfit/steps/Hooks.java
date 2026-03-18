@@ -21,17 +21,21 @@ public class Hooks extends CommonMethods{
 	@After
 	public void end(Scenario scenario)
 	{
-		byte[] screenshot;
-		if(scenario.isFailed())
-		{
-			screenshot =	takeScreenshot("failed/"+ scenario.getName());
-		}
-		else
-		{
-			screenshot = takeScreenshot("passed/"+ scenario.getName());	
-		}
-		
-		scenario.attach(screenshot, "image/png", scenario.getName());
-		tearDown();
+	    byte[] screenshot;
+	    
+	    
+	    String safeName = scenario.getName().replaceAll("[\\\\/:*?\"<>|]", "_");
+	    
+	    if(scenario.isFailed())
+	    {
+	        screenshot = takeScreenshot("failed/" + safeName);
+	    }
+	    else
+	    {
+	        screenshot = takeScreenshot("passed/" + safeName);    
+	    }
+	    
+	    scenario.attach(screenshot, "image/png", scenario.getName());
+	    tearDown();
 	}
 }
