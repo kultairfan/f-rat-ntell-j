@@ -83,7 +83,7 @@ public class OlympusLoginSteps extends CommonMethods{
 	@Then("validate payments success")
 	public void validate_payments_success() {
 		WebElement el = driver.findElement(By.xpath("//div[@class='center']"));
-	if(el.getText().equals("FIRAT1TEST TRANSFER TEST (8800110805166589) İşleminiz başarıyla tamamlandı."))
+	if(el.getText().equals("FIRAT1TEST TRANSFER TEST (5572438) İşleminiz başarıyla tamamlandı."))
 	{
 		System.out.println("Passed");
 	}

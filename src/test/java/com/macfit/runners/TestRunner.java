@@ -7,27 +7,17 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-
-		
 		features = "src/test/resources/features/",
 		glue = "com.macfit.steps",
-		
-		dryRun = true,
-
-		
+		dryRun = false,
 		monochrome = true,
-
-		
-		tags = "@Webform",
-
+		tags = "@olympus",
 		plugin = {
-				
 				"pretty",
+				"summary",
 				"html:target/cucumber-default-report.html",
-				"json:target/cucumber.json" }
-
+				"json:target/cucumber.json"
+		}
 )
-
 public class TestRunner {
-
 }

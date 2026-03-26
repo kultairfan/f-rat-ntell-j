@@ -1,40 +1,42 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.macfit</groupId>
   <artifactId>CucumberFramework8</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
-  <!-- MySQL JDBC Driver -->
-<dependency>
-  <groupId>com.mysql</groupId>
-  <artifactId>mysql-connector-j</artifactId>
-  <version>8.4.0</version>
-</dependency>
+    <!-- MySQL JDBC Driver -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.4.0</version>
+    </dependency>
 
-<!-- JSON (LeadDebugRunner için) -->
-<dependency>
-  <groupId>com.fasterxml.jackson.core</groupId>
-  <artifactId>jackson-databind</artifactId>
-  <version>2.17.2</version>
-</dependency>
+    <!-- JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.17.2</version>
+    </dependency>
+
     <!-- Selenium -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>4.28.0</version>
+      <scope>test</scope>
     </dependency>
-    
-	
+
     <!-- Apache POI -->
     <dependency>
       <groupId>org.apache.poi</groupId>
@@ -47,9 +49,10 @@
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>7.18.1</version>
+      <scope>test</scope>
     </dependency>
 
-    <!-- Cucumber JUnit -->
+    <!-- Cucumber JUnit 4 -->
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
@@ -57,11 +60,12 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Cucumber Core -->
+    <!-- JUnit 4 explicit -->
     <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-core</artifactId>
-      <version>7.18.1</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- Temporary JNA -->
@@ -82,8 +86,10 @@
         <configuration>
           <includes>
             <include>**/*TestRunner.java</include>
+            <include>**/*Test.java</include>
+              <include>**/*Steps.java</include>
           </includes>
-          <testFailureIgnore>true</testFailureIgnore>
+          <testFailureIgnore>false</testFailureIgnore>
         </configuration>
       </plugin>
 
