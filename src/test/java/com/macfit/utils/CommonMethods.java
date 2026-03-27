@@ -201,7 +201,7 @@ public class CommonMethods extends PageInitializer{
 	/**
 	 * This method switches to a frame using its index.
 	 * 
-	 * @param nameOrId
+	 * @param
 	 */
 	public static void switchToFrame(int index)
 	{
@@ -218,7 +218,7 @@ public class CommonMethods extends PageInitializer{
 	/**
 	 * This method switches to a frame using a WebElement.
 	 * 
-	 * @param nameOrId
+	 * @param
 	 */
 	public static void switchToFrame(WebElement element)
 	{
@@ -439,5 +439,18 @@ public class CommonMethods extends PageInitializer{
 		return sdf.format(date);
 		
 	}
+	public static void clickWithRetry(By locator) {
+		for (int i = 0; i < 3; i++) {
+			try {
+				waitForVisibility(locator);
+				driver.findElement(locator).click();
+				return;
+			} catch (org.openqa.selenium.StaleElementReferenceException e) {
+				wait(1);
+			}
+		}
+		throw new RuntimeException("Element stale oldugu icin tiklanamadi: " + locator);
+	}
+
 	
 }

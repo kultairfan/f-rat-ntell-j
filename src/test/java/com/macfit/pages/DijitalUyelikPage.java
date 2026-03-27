@@ -5,32 +5,55 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class DijitalUyelikPage extends CommonMethods {
 
-    public final By phoneInput     = By.id("phone");
-    public final By cityComboBox   = By.xpath("//ng-select[@id='city']//input[@role='combobox']");
-    public final By clubComboBox   = By.xpath("//div[@class='ng-select-container']");
-    public final By girisBtn       = By.xpath("//button[@class='mars-button']");
-    public final By nameInput      = By.id("firstName");
-    public final By surnameInput   = By.id("lastName");
-    public final By emailInput     = By.id("email");
+    public final By phoneInput = By.id("phone");
+    public final By cityComboBox = By.xpath("//ng-select[@id='city']//input[@role='combobox']");
+    public final By clubComboBox = By.xpath("//div[@class='ng-select-container']");
+    public final By girisBtn = By.xpath("//button[@class='mars-button']");
+    public final By nameInput = By.id("firstName");
+    public final By surnameInput = By.id("lastName");
+    public final By emailInput = By.id("email");
     public final By birthDateInput = By.id("birthdate");
-    public final By groupCheckbox  = By.id("groupId-0");
+    public final By groupCheckbox = By.id("groupId-0");
     public final By groupCheckbox2 = By.id("groupId-1");
-    public final By erkekRadio     = By.cssSelector("#genderMen");
-    public final By formGonderBtn  = By.xpath("//button[@class='mars-button']");
-    public final By kabulEtBtn     = By.xpath("//button[normalize-space()='KABUL ET']");
-    public final By confirmBtn     = By.xpath("//button[@class='confirm-button']");
+    public final By erkekRadio = By.cssSelector("#genderMen");
+    public final By formGonderBtn = By.xpath("//button[@class='mars-button']");
+    public final By kabulEtBtn = By.xpath("//button[normalize-space()='KABUL ET']");
+    public final By confirmBtn = By.xpath("//button[@class='confirm-button']");
+    public final By portalOtpCloseBtn = By.xpath("//button[contains(@class,'btn-close')]");
 
     public DijitalUyelikPage() {
         PageFactory.initElements(driver, this);
     }
 
+
     public void sehirSec(String sehir) {
-        By option = By.xpath("//div[normalize-space()='" + sehir + "']");
-        waitForClickability(driver.findElement(cityComboBox));
-        driver.findElement(cityComboBox).click();
-        scrollToElement(driver.findElement(option));
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                            By.cssSelector(".ols-loader")
+                    )
+            );
+        } catch (Exception e) {
+            // loader yoksa devam et
+        }
+
+        WebElement input = driver.findElement(By.xpath("//ng-select[@id='city']//input[@role='combobox']"));
+
+        try {
+            input.click();
+        } catch (Exception e) {
+            getJSObject().executeScript("arguments[0].click();", input);
+        }
+
+        input.sendKeys(sehir);
+        wait(1);
+
+        By option = By.xpath("//div[@role='option' and contains(text(),'" + sehir + "')]");
+        waitForClickability(driver.findElement(option));
         driver.findElement(option).click();
     }
 
@@ -73,13 +96,26 @@ public class DijitalUyelikPage extends CommonMethods {
     }
 
     public void butonatikla() {
-        waitForClickability(driver.findElement(formGonderBtn));
-        driver.findElement(formGonderBtn).click();
+        WebElement btn = driver.findElement(formGonderBtn);
+        scrollToElement(btn);
+        getJSObject().executeScript("arguments[0].click()", btn);
     }
 
     public void confirmButon() {
         waitForClickability(driver.findElement(confirmBtn));
         driver.findElement(confirmBtn).click();
         wait(2);
+    }
+    public void portalOtpPopupKapat() {
+        try {
+            wait(2);
+            List<WebElement> closeList = driver.findElements(portalOtpCloseBtn);
+            if (!closeList.isEmpty()) {
+
+                click(closeList.get(0));
+                wait(1);
+            }
+        } catch (Exception ignored) {
+        }
     }
 }

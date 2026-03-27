@@ -1,11 +1,8 @@
 package com.macfit.steps.LeadYonetimi;
 
-import com.macfit.pages.AdayUyePage;
-import com.macfit.pages.DijitalUyelikPage;
-import com.macfit.pages.GorevAtamaPage;
-import com.macfit.pages.JoinUsPage;
-import com.macfit.pages.OlympusPage;
+import com.macfit.pages.*;
 import com.macfit.utils.CommonMethods;
+import com.macfit.utils.TestData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -26,7 +23,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     private AdayUyePage adayUyePage;
     private GorevAtamaPage gorevAtamaPage;
 
-    private String aktifGsmNo;
+    private static String randomGsmNo;
     private String aktifGorevTipi;
 
     private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
@@ -37,6 +34,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @Given("Olympus dashboard acilir ve giris yapilir")
     public void olympusDashboardAcilirVeGirisYapilir() {
+        randomGsmNo       = TestData.generatePhone();
         olympusPage       = new OlympusPage();
         joinUsPage        = new JoinUsPage();
         dijitalUyelikPage = new DijitalUyelikPage();
@@ -55,24 +53,23 @@ public class LeadPortalFlowSteps extends CommonMethods {
         olympusPage.adayUyeEkleBtn();
     }
 
-
-    @And("Aday uye ekle formuna bilgiler girilir ad {string} soyad {string} gsmNo {string} email {string} kaynak {string}")
+    @And("Aday uye ekle formuna bilgiler girilir ad {string} soyad {string} gsmNo {string} email {string} kaynak {string} dogumtarihi {string}")
     public void adayUyeEkleFormunaBilgilerGirilir(String ad, String soyad, String gsmNo,
-                                                   String email, String kaynak) {
-        aktifGsmNo = gsmNo;
-        adayUyePage.adayUyeEkleModalAc();
-        adayUyePage.adayUyeFormunuDoldur(ad, soyad, gsmNo, email, kaynak);
+                                                  String email, String kaynak, String dogumTarihi) {
+        adayUyePage.adayUyeFormunuDoldur(ad, soyad, randomGsmNo, email, kaynak, dogumTarihi);
     }
 
     @And("OTP dogrulamasi atlanir")
     public void otpDogrulamasiAtlanir() {
         adayUyePage.otpAtla();
+        adayUyePage.adayUyePopupKapat();
+
     }
 
     @And("SMS kodu DBden cekilip OTP girilir {string}")
     public void smsKoduDbdenCekilipOtpGirilir(String gsmNo) {
-        String kod = olympusPage.getSmsKodu("90" + gsmNo);
-        Assert.assertNotNull("SMS kodu alinamadi! GSM: " + gsmNo, kod);
+        String kod = olympusPage.getSmsKodu("90" + randomGsmNo);
+        Assert.assertNotNull("SMS kodu alinamadi!", kod);
         adayUyePage.otpDogrula(kod);
     }
 
@@ -84,6 +81,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @Then("Aday uye basariyla olusturulur")
     public void adayUyeBasariyleOlusturulur() {
         adayUyePage.adayUyeBasariKontrol();
+        System.out.println("Aday uye basariyla olusturulur - GSM: " + randomGsmNo);
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -95,15 +93,14 @@ public class LeadPortalFlowSteps extends CommonMethods {
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get(resolvePortalUrl(portalUrlKey));
         driver.manage().window().maximize();
+        waitForVisibility(By.id("phone"));
         getJSObject().executeScript("document.body.style.zoom='60%'");
-        wait(2);
     }
 
     @And("Portala telefon numarasi girilir {string}")
     public void portalaTelefonNumarasiGirilir(String gsmNo) {
-        aktifGsmNo = gsmNo;
         waitForVisibility(By.id("phone"));
-        driver.findElement(By.id("phone")).sendKeys(gsmNo);
+        driver.findElement(By.id("phone")).sendKeys(randomGsmNo);
     }
 
     @And("Portal sehir {string} secilir")
@@ -120,7 +117,10 @@ public class LeadPortalFlowSteps extends CommonMethods {
     public void portalFormBilgileriGirilir(String ad, String soyad, String email, String dogumTarihi) {
         dijitalUyelikPage.girisButton();
         dijitalUyelikPage.devamet();
-        dijitalUyelikPage.formDoldur(ad, soyad, email, aktifGsmNo, dogumTarihi);
+        // "bilgiler" yerine firstName input'u bekle — URL farklı olabilir
+        waitForVisibility(By.id("firstName"));
+        getJSObject().executeScript("document.body.style.zoom='60%'");
+        dijitalUyelikPage.formDoldur(ad, soyad, email, randomGsmNo, dogumTarihi);
     }
 
     @And("Portal formu gonderilir")
@@ -131,19 +131,20 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @Then("Portal OTP dogrulamasi atlanir")
     public void portalOtpDogrulamasiAtlanir() {
-        try {
-            wait(2);
-            List<WebElement> list = driver.findElements(By.xpath("//button[normalize-space()='Atla']"));
-            if (!list.isEmpty()) list.get(0).click();
-        } catch (Exception ignored) { }
+        dijitalUyelikPage.portalOtpPopupKapat();
     }
 
     @And("Portal SMS kodu DBden cekilip girilir {string}")
     public void portalSmsKoduDbdenCekilipGirilir(String gsmNo) {
-        String kod = olympusPage.getSmsKodu("90" + gsmNo);
-        Assert.assertNotNull("Portal SMS kodu alinamadi! GSM: " + gsmNo, kod);
+        String kod = olympusPage.getSmsKodu("90" + randomGsmNo);
+        Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
         wait(2);
-        driver.findElement(joinUsPage.getOtpLocator()).sendKeys(kod);
+        List<WebElement> inputs = driver.findElements(
+                By.cssSelector("input[id^='otp_0_']"));
+        for (int i = 0; i < kod.length() && i < inputs.size(); i++) {
+            inputs.get(i).click();
+            inputs.get(i).sendKeys(String.valueOf(kod.charAt(i)));
+        }
         wait(1);
     }
 
@@ -173,8 +174,8 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("JoinUs formu doldurulur ad {string} soyad {string} email {string} dogumtarihi {string} personelno {string}")
     public void joinUsFormuDoldurulur(String ad, String soyad, String email,
-                                       String dogumTarihi, String personelNo) {
-        joinUsPage.formDoldur(ad, soyad, email, aktifGsmNo, dogumTarihi, personelNo);
+                                      String dogumTarihi, String personelNo) {
+        joinUsPage.formDoldur(ad, soyad, email, randomGsmNo, dogumTarihi, personelNo);
     }
 
     @And("JoinUs onay butonuna basilir")
@@ -184,15 +185,16 @@ public class LeadPortalFlowSteps extends CommonMethods {
     public void joinUsOtpDogrulamasiAtlanir() {
         try {
             wait(2);
-            List<WebElement> list = driver.findElements(By.xpath("//button[normalize-space()='Atla']"));
+            List<WebElement> list = driver.findElements(
+                    By.xpath("//button[normalize-space()='Atla']"));
             if (!list.isEmpty()) list.get(0).click();
         } catch (Exception ignored) { }
     }
 
     @And("JoinUs SMS kodu DBden cekilip girilir {string}")
     public void joinUsSmsKoduDbdenCekilipGirilir(String gsmNo) {
-        String kod = olympusPage.getSmsKodu("90" + gsmNo);
-        Assert.assertNotNull("JoinUs SMS kodu alinamadi! GSM: " + gsmNo, kod);
+        String kod = olympusPage.getSmsKodu("90" + randomGsmNo);
+        Assert.assertNotNull("JoinUs SMS kodu alinamadi!", kod);
         wait(2);
         driver.findElement(joinUsPage.getOtpLocator()).sendKeys(kod);
     }
@@ -206,15 +208,17 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @Given("Olympus sekmesine gecilir")
     public void olympusSekmesineGecilir() {
-        driver.switchTo().window(new ArrayList<>(driver.getWindowHandles()).get(0));
+        driver.switchTo().window(
+                new ArrayList<>(driver.getWindowHandles()).get(0));
         wait(1);
     }
 
     @When("Telefon ile arama yapilir {string}")
     public void telefonIleAramaYapilir(String gsmNo) {
-        aktifGsmNo = gsmNo;
-        olympusPage.uyeAramaIle(gsmNo);
-        wait(2);
+        olympusPage.kulupKolonunuAc();
+        olympusPage.uyeAramaIle(randomGsmNo);
+
+
     }
 
     @When("Ilk satirda uzerine alinir")
@@ -249,15 +253,68 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @Then("Ilk satirda kaynak {string} gorunur")
     public void ilkSatirdaKaynakGorunur(String expected) {
         String gercek = olympusPage.getIlkSatirKaynak();
-        Assert.assertTrue("Kaynak beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
+        Assert.assertTrue(
+                "Kaynak beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
                 gercek.contains(expected));
     }
 
-    @Then("Ilk satirda isim {string} gorunur")
-    public void ilkSatirdaIsimGorunur(String expected) {
-        List<WebElement> list = driver.findElements(
-                By.xpath("//span[normalize-space()='" + expected + "']"));
-        Assert.assertFalse("Isim bulunamadi: " + expected, list.isEmpty());
+    @And("Ilk satirda ad {string} gorunur")
+    public void ilkSatirdaAdGorunur(String expected) {
+        String gercek = olympusPage.getIlkSatirAd();
+        Assert.assertTrue(
+                "Ad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
+                gercek.contains(expected));
+    }
+
+    @And("Ilk satirda soyad {string} gorunur")
+    public void ilkSatirdaSoyadGorunur(String expected) {
+        String gercek = olympusPage.getIlkSatirSoyad();
+        Assert.assertTrue(
+                "Soyad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
+                gercek.contains(expected));
+    }
+
+    @And("Ilk satirda kulup {string} gorunur")
+    public void ilkSatirdaKulupGorunur(String beklenenKulup) {
+        String actualKulup = olympusPage.getIlkSatirKulup();
+        System.out.println("DEBUG Kulup actual = " + actualKulup);
+        Assert.assertEquals(
+                "Kulup beklenen: '" + beklenenKulup + "' | Gercek: '" + actualKulup + "'",
+                beklenenKulup.trim(),
+                actualKulup.trim()
+        );
+    }
+
+    @And("Ilk satirda satis temsilcisi {string} gorunur")
+    public void ilkSatirdaSatisTemsilcisiGorunur(String beklenenTemsilci) {
+        String actualTemsilci = olympusPage.getIlkSatirSatisTemsilcisi();
+        System.out.println("DEBUG Satis Temsilcisi actual = " + actualTemsilci);
+        Assert.assertEquals(
+                "Satis Temsilcisi beklenen: '" + beklenenTemsilci + "' | Gercek: '" + actualTemsilci + "'",
+                beklenenTemsilci.trim(),
+                actualTemsilci.trim()
+        );
+    }
+
+    @And("Ilk satirda tags {string} gorunur")
+    public void ilkSatirdaTagsGorunur(String beklenenTags) {
+
+        String actual = olympusPage.getIlkSatirTags();
+
+        // 🔥 kritik fix
+        actual = actual
+                .replace("\n", " ")
+                .replace("\r", " ")
+                .replaceAll("\\s+", " ")
+                .trim();
+
+        System.out.println("DEBUG Tags actual = " + actual);
+
+        Assert.assertEquals(
+                "Tags beklenen: '" + beklenenTags + "' | Gercek: '" + actual + "'",
+                beklenenTags.trim(),
+                actual
+        );
     }
 
     // ══════════════════════════════════════════════════════════════════
