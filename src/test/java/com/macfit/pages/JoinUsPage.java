@@ -11,7 +11,7 @@ public class JoinUsPage extends CommonMethods {
     public final By submitButton        = By.cssSelector("button[type='submit']");
     public final By continueButton      = By.cssSelector(".button.primary-button.single-button");
     public final By cityComboBox        = By.cssSelector("ng-select[id='city'] input[role='combobox']");
-    public final By countryComboBox     = By.id("country");
+    public final By countryComboBox     = By.cssSelector("ng-select[id='country'] input[role='combobox']");
     public final By clubComboBox        = By.cssSelector("div[class='ng-select-container'] input[role='combobox']");
     public final By packageBox          = By.cssSelector("div[class='mars-box'] div:nth-child(1) div:nth-child(1) div:nth-child(4)");
     public final By nameInput           = By.id("firstName");
@@ -64,10 +64,19 @@ public class JoinUsPage extends CommonMethods {
     }
 
     public void ulkeSec(String ulke) {
-        By opt = By.xpath("//div[contains(text(),'" + ulke + "')]");
-        waitForClickability(driver.findElement(countryComboBox));
-        driver.findElement(countryComboBox).click();
-        scrollToElement(driver.findElement(opt));
+        By opt = By.xpath("//ng-dropdown-panel//div[contains(@class,'ng-option') and normalize-space()='" + ulke + "']");
+        getWaitObject().until(
+                org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                        By.className("ols-loader")));
+        WebElement input = driver.findElement(countryComboBox);
+        try {
+            input.click();
+        } catch (Exception e) {
+            jsClick(input);
+        }
+        input.sendKeys(ulke);
+        wait(1);
+        waitForVisibility(opt);
         driver.findElement(opt).click();
         driver.findElement(By.xpath("//button[@type='submit']")).click();
     }

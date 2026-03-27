@@ -129,10 +129,10 @@ public class AdayUyePage extends CommonMethods {
     }
 
     public void otpConfirmBas() {
-        try {
-            click(driver.findElement(btnConfirm));
-            wait(2);
-        } catch (Exception ignored) { }
+        By confirmLoc = By.xpath("//ngb-modal-window//app-modal-sms//div[3]/div[1]/div/button[2]");
+        waitForVisibility(confirmLoc);
+        click(driver.findElement(confirmLoc));
+        wait(2);
     }
 
     // ══════════════════════════════════════════════════════════════════

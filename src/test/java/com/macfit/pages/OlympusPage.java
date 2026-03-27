@@ -47,11 +47,10 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void adayUyeSayfasinaGit() {
-        wait(2);
+        waitForVisibility(adayUyeMenuBtn);
         WebElement btn = driver.findElement(adayUyeMenuBtn);
         getJSObject().executeScript("arguments[0].click()", btn);
         getJSObject().executeScript("document.body.style.zoom='60%'");
-        wait(2);
     }
 
     public void adayUyeEkleBtn() {
@@ -79,7 +78,7 @@ public class OlympusPage extends CommonMethods {
         driver.findElement(uyeAramaInput).clear();
         driver.findElement(uyeAramaInput).sendKeys(gsmNo);
         jsClick(driver.findElement(uyeAramaBtn));
-        wait(2);
+        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -89,13 +88,11 @@ public class OlympusPage extends CommonMethods {
     public void uzerineAl() {
         waitForClickability(driver.findElement(ucNoktaBtn));
         driver.findElement(ucNoktaBtn).click();
-        wait(1);
         waitForClickability(driver.findElement(uzerineAlIkon));
         driver.findElement(uzerineAlIkon).click();
-        wait(1);
         waitForClickability(driver.findElement(evetButon));
         driver.findElement(evetButon).click();
-        wait(2);
+        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -105,11 +102,9 @@ public class OlympusPage extends CommonMethods {
     public void gorevMenuAc(String gorevTipi) {
         waitForClickability(driver.findElement(ucNoktaBtn));
         driver.findElement(ucNoktaBtn).click();
-        wait(1);
         By gorevLoc = By.xpath("//*[normalize-space()='" + gorevTipi + "']");
         waitForClickability(driver.findElement(gorevLoc));
         driver.findElement(gorevLoc).click();
-        wait(1);
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -178,25 +173,29 @@ public class OlympusPage extends CommonMethods {
         return db.smsCodeGetir(telefonWith90);
     }
     public void kulupKolonunuAc() {
-        By ayarButonu = By.xpath("(//div[@class='btn-group dropdown'])[2]");
+        By ayarButonu    = By.xpath("//app-lead//thead/tr/th[last()]//button");
+        By kulupLabel    = By.xpath("//label[@for='lead-table6']");
         By kulupCheckbox = By.id("lead-table6");
 
-        waitForClickability(driver.findElement(ayarButonu));
-        click(driver.findElement(ayarButonu));
-        wait(1);
+        // Tablo tamamen yüklenene kadar bekle
+        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
+        getWaitObject().until(ExpectedConditions.presenceOfElementLocated(ayarButonu));
+        jsClick(driver.findElement(ayarButonu));
 
+        waitForVisibility(kulupLabel);
         WebElement kulupElement = driver.findElement(kulupCheckbox);
 
-        // Eğer seçili değilse tıkla
-        if (!kulupElement.isSelected()) {
-            jsClick(kulupElement);
+        // isSelected() Angular'da güvenilmez — JS ile kontrol et
+        Boolean isChecked = (Boolean) getJSObject().executeScript("return arguments[0].checked", kulupElement);
+        if (isChecked == null || !isChecked) {
+            jsClick(driver.findElement(kulupLabel));
             System.out.println("Kulüp kolonu açıldı.");
         } else {
             System.out.println("Kulüp kolonu zaten açık.");
         }
 
-        wait(1);
-        click(driver.findElement(ayarButonu));
+        getWaitObject().until(ExpectedConditions.presenceOfElementLocated(ayarButonu));
+        jsClick(driver.findElement(ayarButonu));
     }
 
 }

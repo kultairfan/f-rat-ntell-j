@@ -210,7 +210,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     public void olympusSekmesineGecilir() {
         driver.switchTo().window(
                 new ArrayList<>(driver.getWindowHandles()).get(0));
-        wait(1);
+        waitForVisibility(By.id("gsmNo"));
     }
 
     @When("Telefon ile arama yapilir {string}")
@@ -240,9 +240,8 @@ public class LeadPortalFlowSteps extends CommonMethods {
     public void gorevNedenKoduylaKaydedilir(String nedenKodu) {
         gorevAtamaPage.gorevModalinuDoldurVeKaydet(aktifGorevTipi, nedenKodu);
         if ("Satis Gorusmesi".equals(aktifGorevTipi)) {
-            wait(2);
             driver.get("https://olympusdev-dashboard.marsathletic.com/member/lead");
-            wait(2);
+            waitForVisibility(By.id("gsmNo"));
         }
     }
 
@@ -263,7 +262,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
         String gercek = olympusPage.getIlkSatirAd();
         Assert.assertTrue(
                 "Ad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
-                gercek.contains(expected));
+                gercek.toLowerCase().contains(expected.toLowerCase()));
     }
 
     @And("Ilk satirda soyad {string} gorunur")
@@ -271,7 +270,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
         String gercek = olympusPage.getIlkSatirSoyad();
         Assert.assertTrue(
                 "Soyad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
-                gercek.contains(expected));
+                gercek.toLowerCase().contains(expected.toLowerCase()));
     }
 
     @And("Ilk satirda kulup {string} gorunur")

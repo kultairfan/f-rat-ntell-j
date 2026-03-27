@@ -30,15 +30,16 @@ Feature: Lead Portal Akisi - Olympus Aday Uye + Portal 2. Gidis
     And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad    | soyad | gsmNo      | email                  | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           |
-      | Boran | Boran | 5981110515 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | ahmet    | ahmet       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Randevu Planla | Alotech Ulasilamadi |
+      | ad        | soyad | gsmNo      | email                  | kaynak       | dogumTarihi | portalUrl            | portalAd  | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags                        | gorevTipi      | nedenKodu           |
+      | Ela | kulta | 5981110515 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Web Form - Günlük Üyelik Kampanyası | Randevu Planla | Alotech Ulasilamadi |
 
   @withoutOTP @1A2
-  Scenario Outline: 1A2 - Aday uye olustur joinus 2. gidis OTPsiz
+  Scenario Outline: 1A2 - Aday uye olustur Otp li joinus 2. gidis OTPsiz
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
+    And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
+    And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
 
     When "<portalUrl>" portali acilir
@@ -66,5 +67,5 @@ Feature: Lead Portal Akisi - Olympus Aday Uye + Portal 2. Gidis
     And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad    | soyad | gsmNo      | email                  | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
-      | Boran | Boran | 5981110516 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | ahmet    | ahmet       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
+      | ad        | soyad | gsmNo      | email                  | kaynak       | dogumTarihi | portalUrl | portalAd  | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
+      | Ela | kulta | 5981110516 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |

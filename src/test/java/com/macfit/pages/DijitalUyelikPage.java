@@ -71,8 +71,12 @@ public class DijitalUyelikPage extends CommonMethods {
     }
 
     public void devamet() {
-        waitForClickability(driver.findElement(kabulEtBtn));
-        driver.findElement(kabulEtBtn).click();
+        try {
+            waitForClickability(driver.findElement(kabulEtBtn));
+            driver.findElement(kabulEtBtn).click();
+        } catch (Exception ignored) {
+            // KABUL ET butonu her zaman çıkmayabilir
+        }
     }
 
     public void formDoldur(String ad, String soyad, String email,
@@ -85,14 +89,18 @@ public class DijitalUyelikPage extends CommonMethods {
         sendText(driver.findElement(phoneInput), telefon);
         sendText(driver.findElement(birthDateInput), dogumTarihi);
 
+        getWaitObject().until(
+                org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                        By.className("ols-loader")));
+
         WebElement cb1 = driver.findElement(groupCheckbox);
-        if (!cb1.isSelected()) cb1.click();
+        if (!cb1.isSelected()) jsClick(cb1);
 
         WebElement cb2 = driver.findElement(groupCheckbox2);
-        if (!cb2.isSelected()) cb2.click();
+        if (!cb2.isSelected()) jsClick(cb2);
 
         WebElement radio = driver.findElement(erkekRadio);
-        if (!radio.isSelected()) radio.click();
+        if (!radio.isSelected()) jsClick(radio);
     }
 
     public void butonatikla() {
