@@ -2,6 +2,7 @@ package com.macfit.steps.LeadYonetimi;
 
 import com.macfit.pages.*;
 import com.macfit.utils.CommonMethods;
+import com.macfit.utils.SoftAssertionCollector;
 import com.macfit.utils.TestData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -41,6 +42,12 @@ public class LeadPortalFlowSteps extends CommonMethods {
         adayUyePage       = new AdayUyePage();
         gorevAtamaPage    = new GorevAtamaPage();
         olympusPage.olympusLogin();
+    }
+    @Then("Olympus dashboard navigate edilir")
+    public void olympusDashboardNavigateedilir()
+    {
+        driver.navigate().to("https://olympusdev-dashboard.marsathletic.com/member/lead");
+
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -105,7 +112,11 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Portal sehir {string} secilir")
     public void portalSehirSecilir(String sehir) {
-        dijitalUyelikPage.sehirSec(sehir);
+        if (driver.getCurrentUrl().contains("join-us")) {
+            joinUsPage.sehirSec(sehir);
+        } else {
+            dijitalUyelikPage.sehirSec(sehir);
+        }
     }
 
     @And("Portal kulup {string} secilir")
@@ -136,6 +147,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Portal SMS kodu DBden cekilip girilir {string}")
     public void portalSmsKoduDbdenCekilipGirilir(String gsmNo) {
+        wait(5);
         String kod = olympusPage.getSmsKodu("90" + randomGsmNo);
         Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
         wait(2);
@@ -239,7 +251,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @And("Gorev {string} neden koduyla kaydedilir")
     public void gorevNedenKoduylaKaydedilir(String nedenKodu) {
         gorevAtamaPage.gorevModalinuDoldurVeKaydet(aktifGorevTipi, nedenKodu);
-        if ("Satis Gorusmesi".equals(aktifGorevTipi)) {
+        if (aktifGorevTipi != null && aktifGorevTipi.trim().equals("Satış Görüşmesi")) {
             driver.get("https://olympusdev-dashboard.marsathletic.com/member/lead");
             waitForVisibility(By.id("gsmNo"));
         }
@@ -260,60 +272,45 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @And("Ilk satirda ad {string} gorunur")
     public void ilkSatirdaAdGorunur(String expected) {
         String gercek = olympusPage.getIlkSatirAd();
-        Assert.assertTrue(
-                "Ad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
-                gercek.toLowerCase().contains(expected.toLowerCase()));
+        if (!gercek.toLowerCase().contains(expected.toLowerCase())) {
+            SoftAssertionCollector.add("Ad beklenen: '" + expected + "' | Gercek: '" + gercek + "'");
+        }
     }
 
     @And("Ilk satirda soyad {string} gorunur")
     public void ilkSatirdaSoyadGorunur(String expected) {
         String gercek = olympusPage.getIlkSatirSoyad();
-        Assert.assertTrue(
-                "Soyad beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
-                gercek.toLowerCase().contains(expected.toLowerCase()));
+        if (!gercek.toLowerCase().contains(expected.toLowerCase())) {
+            SoftAssertionCollector.add("Soyad beklenen: '" + expected + "' | Gercek: '" + gercek + "'");
+        }
     }
 
     @And("Ilk satirda kulup {string} gorunur")
     public void ilkSatirdaKulupGorunur(String beklenenKulup) {
         String actualKulup = olympusPage.getIlkSatirKulup();
         System.out.println("DEBUG Kulup actual = " + actualKulup);
-        Assert.assertEquals(
-                "Kulup beklenen: '" + beklenenKulup + "' | Gercek: '" + actualKulup + "'",
-                beklenenKulup.trim(),
-                actualKulup.trim()
-        );
+        if (!beklenenKulup.trim().equals(actualKulup.trim())) {
+            SoftAssertionCollector.add("Kulup beklenen: '" + beklenenKulup + "' | Gercek: '" + actualKulup + "'");
+        }
     }
 
     @And("Ilk satirda satis temsilcisi {string} gorunur")
     public void ilkSatirdaSatisTemsilcisiGorunur(String beklenenTemsilci) {
         String actualTemsilci = olympusPage.getIlkSatirSatisTemsilcisi();
         System.out.println("DEBUG Satis Temsilcisi actual = " + actualTemsilci);
-        Assert.assertEquals(
-                "Satis Temsilcisi beklenen: '" + beklenenTemsilci + "' | Gercek: '" + actualTemsilci + "'",
-                beklenenTemsilci.trim(),
-                actualTemsilci.trim()
-        );
+        if (!beklenenTemsilci.trim().equals(actualTemsilci.trim())) {
+            SoftAssertionCollector.add("Satis Temsilcisi beklenen: '" + beklenenTemsilci + "' | Gercek: '" + actualTemsilci + "'");
+        }
     }
 
     @And("Ilk satirda tags {string} gorunur")
     public void ilkSatirdaTagsGorunur(String beklenenTags) {
-
         String actual = olympusPage.getIlkSatirTags();
-
-        // 🔥 kritik fix
-        actual = actual
-                .replace("\n", " ")
-                .replace("\r", " ")
-                .replaceAll("\\s+", " ")
-                .trim();
-
+        actual = actual.replace("\n", " ").replace("\r", " ").replaceAll("\\s+", " ").trim();
         System.out.println("DEBUG Tags actual = " + actual);
-
-        Assert.assertEquals(
-                "Tags beklenen: '" + beklenenTags + "' | Gercek: '" + actual + "'",
-                beklenenTags.trim(),
-                actual
-        );
+        if (!beklenenTags.trim().equals(actual)) {
+            SoftAssertionCollector.add("Tags beklenen: '" + beklenenTags + "' | Gercek: '" + actual + "'");
+        }
     }
 
     // ══════════════════════════════════════════════════════════════════

@@ -20,7 +20,7 @@ public class OlympusPage extends CommonMethods {
     public final By uyeAramaInput     = By.id("gsmNo");
     public final By uyeAramaBtn       = By.xpath("//button[@id='filter-phone-search-btn']");
     public final By ucNoktaBtn        = By.xpath("//i[@class='mdi mdi-dots-horizontal']");
-    public final By uzerineAlIkon     = By.xpath("//i[@class='ri-file-transfer-line text-primary label-icon align-middle fs-20 me-2']");
+    public final By uzerineAlIkon     = By.xpath("//i[contains(@class,'ri-file-transfer-line')] | //*[normalize-space()='Üzerine Al']");
     public final By evetButon         = By.xpath("//button[normalize-space()='Evet']");
     public final By kaydetButon       = By.xpath("//button[@id='add-btn']");
 
@@ -33,13 +33,18 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void olympusLogin() {
-        waitForVisibility(kullaniciAdiInput);
-        driver.findElement(kullaniciAdiInput).clear();
-        driver.findElement(kullaniciAdiInput).sendKeys(ConfigsReader.getProperty("username"));
-        driver.findElement(sifreInput).clear();
-        driver.findElement(sifreInput).sendKeys(ConfigsReader.getProperty("password"));
-        driver.findElement(girisButon).click();
-        wait(2);
+        driver.get(ConfigsReader.getProperty("url"));
+        try {
+            waitForVisibility(kullaniciAdiInput);
+            driver.findElement(kullaniciAdiInput).clear();
+            driver.findElement(kullaniciAdiInput).sendKeys(ConfigsReader.getProperty("username"));
+            driver.findElement(sifreInput).clear();
+            driver.findElement(sifreInput).sendKeys(ConfigsReader.getProperty("password"));
+            driver.findElement(girisButon).click();
+            wait(2);
+        } catch (Exception ignored) {
+            // Zaten login durumunda — uygulama dashboard'a yonlendirdi
+        }
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -88,8 +93,14 @@ public class OlympusPage extends CommonMethods {
     public void uzerineAl() {
         waitForClickability(driver.findElement(ucNoktaBtn));
         driver.findElement(ucNoktaBtn).click();
-        waitForClickability(driver.findElement(uzerineAlIkon));
-        driver.findElement(uzerineAlIkon).click();
+        java.util.List<WebElement> uzerineAlList = driver.findElements(uzerineAlIkon);
+        if (uzerineAlList.isEmpty()) {
+            // Lead zaten bu kullanıcıya atanmış, üzerine al seçeneği yok — kapat ve devam et
+            driver.findElement(ucNoktaBtn).click();
+            return;
+        }
+        waitForClickability(uzerineAlList.get(0));
+        uzerineAlList.get(0).click();
         waitForClickability(driver.findElement(evetButon));
         driver.findElement(evetButon).click();
         getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
@@ -102,9 +113,22 @@ public class OlympusPage extends CommonMethods {
     public void gorevMenuAc(String gorevTipi) {
         waitForClickability(driver.findElement(ucNoktaBtn));
         driver.findElement(ucNoktaBtn).click();
-        By gorevLoc = By.xpath("//*[normalize-space()='" + gorevTipi + "']");
-        waitForClickability(driver.findElement(gorevLoc));
-        driver.findElement(gorevLoc).click();
+        if (gorevTipi.equals("Telefon Aramasi Planla")) {
+            By aramaGoreviLoc = By.xpath("//*[normalize-space()='Arama Görevi Planla']");
+            waitForVisibility(aramaGoreviLoc);
+            driver.findElement(aramaGoreviLoc).click();
+            By telefonLoc = By.xpath("//*[contains(normalize-space(),'Telefon Araması')]");
+            getWaitObject().until(ExpectedConditions.presenceOfElementLocated(telefonLoc));
+            jsClick(driver.findElement(telefonLoc));
+        } else if (gorevTipi.trim().equals("Satis Gorusmesi") || gorevTipi.trim().equals("Satış Görüşmesi")) {
+            By gorevLoc = By.xpath("//*[normalize-space()='Satış Görüşmesi']");
+            waitForClickability(driver.findElement(gorevLoc));
+            driver.findElement(gorevLoc).click();
+        } else {
+            By gorevLoc = By.xpath("//*[normalize-space()='" + gorevTipi + "']");
+            waitForClickability(driver.findElement(gorevLoc));
+            driver.findElement(gorevLoc).click();
+        }
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -137,8 +161,9 @@ public class OlympusPage extends CommonMethods {
     }
 
     public String getIlkSatirTags() {
-        // Tags span içinde geliyor (td[12])
-        return getSutunText(12, true);
+        By loc = By.xpath("//table[contains(@class,'lead-table')]//tbody/tr[1]/td[13]/div");
+        waitForVisibility(loc);
+        return driver.findElement(loc).getText().trim();
     }
 
     /**

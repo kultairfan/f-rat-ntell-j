@@ -22,7 +22,7 @@ public class DijitalUyelikPage extends CommonMethods {
     public final By erkekRadio = By.cssSelector("#genderMen");
     public final By formGonderBtn = By.xpath("//button[@class='mars-button']");
     public final By kabulEtBtn = By.xpath("//button[normalize-space()='KABUL ET']");
-    public final By confirmBtn = By.xpath("//button[@class='confirm-button']");
+    public final By confirmBtn = By.xpath("//app-digital-member-otp//form//div[3]/button | //app-join-us-otp//form//div[3]/button");
     public final By portalOtpCloseBtn = By.xpath("//button[contains(@class,'btn-close')]");
 
     public DijitalUyelikPage() {
@@ -110,8 +110,8 @@ public class DijitalUyelikPage extends CommonMethods {
     }
 
     public void confirmButon() {
-        waitForClickability(driver.findElement(confirmBtn));
-        driver.findElement(confirmBtn).click();
+        waitForVisibility(confirmBtn);
+        jsClick(driver.findElement(confirmBtn));
         wait(2);
     }
     public void portalOtpPopupKapat() {

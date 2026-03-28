@@ -23,6 +23,13 @@ public class GorevAtamaPage extends CommonMethods {
 
         waitForClickability(driver.findElement(kaydetButon));
         driver.findElement(kaydetButon).click();
-        wait(2);
+        wait(1);
+
+        try {
+            By hayirBtn = By.xpath("//ngb-modal-window[2]//app-modal-warning//div/button");
+            waitForVisibility(hayirBtn);
+            driver.findElement(hayirBtn).click();
+            wait(1);
+        } catch (Exception ignored) { }
     }
 }

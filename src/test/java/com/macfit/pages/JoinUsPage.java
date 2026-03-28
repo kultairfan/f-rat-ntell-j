@@ -33,8 +33,20 @@ public class JoinUsPage extends CommonMethods {
     }
 
     public void devamEt() {
-        waitForClickability(driver.findElement(submitButton));
-        driver.findElement(submitButton).click();
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                            By.cssSelector(".ols-loader")));
+        } catch (Exception ignored) {}
+        // join-us: button[type='submit'], dijital/vucut: button.mars-button
+        if (!driver.findElements(submitButton).isEmpty()) {
+            waitForVisibility(submitButton);
+            jsClick(driver.findElement(submitButton));
+        } else {
+            By marsBtn = By.cssSelector("button.mars-button");
+            waitForVisibility(marsBtn);
+            jsClick(driver.findElement(marsBtn));
+        }
     }
 
     public void ilkDevamButonunaBas() {
@@ -43,11 +55,16 @@ public class JoinUsPage extends CommonMethods {
     }
 
     public void sehirSec(String sehir) {
-        By opt = By.xpath("//div[normalize-space()='" + sehir + "']");
-        waitForClickability(driver.findElement(cityComboBox));
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                            By.cssSelector(".ols-loader")));
+        } catch (Exception ignored) {}
+        waitForVisibility(cityComboBox);
         driver.findElement(cityComboBox).click();
-        scrollToElement(driver.findElement(opt));
-        driver.findElement(opt).click();
+        By opt = By.xpath("//div[normalize-space()='" + sehir + "']");
+        waitForVisibility(opt);
+        jsClick(driver.findElement(opt));
     }
 
     public void kulupSec(String kulup) {
