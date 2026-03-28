@@ -134,6 +134,16 @@ public class LeadPortalFlowSteps extends CommonMethods {
         dijitalUyelikPage.formDoldur(ad, soyad, email, randomGsmNo, dogumTarihi);
     }
 
+    @And("Portal devam butonuna basilir")
+    public void portalDevamButonunaBasilir() {
+        By devamBtn = By.xpath("/html/body/app-root/app-digital-member-layout/main/app-digital-member/div/div[2]/form/button");
+        waitForVisibility(devamBtn);
+        jsClick(driver.findElement(devamBtn));
+        By kabulEtBtn = By.xpath("/html/body/ngb-modal-window/div/div/app-modal/div[3]/button");
+        waitForVisibility(kabulEtBtn);
+        jsClick(driver.findElement(kabulEtBtn));
+    }
+
     @And("Portal formu gonderilir")
     public void portalFormuGonderilir() {
         dijitalUyelikPage.butonatikla();
@@ -153,9 +163,14 @@ public class LeadPortalFlowSteps extends CommonMethods {
         wait(2);
         List<WebElement> inputs = driver.findElements(
                 By.cssSelector("input[id^='otp_0_']"));
-        for (int i = 0; i < kod.length() && i < inputs.size(); i++) {
-            inputs.get(i).click();
-            inputs.get(i).sendKeys(String.valueOf(kod.charAt(i)));
+        if (inputs.size() == 1) {
+            inputs.get(0).click();
+            inputs.get(0).sendKeys(kod);
+        } else {
+            for (int i = 0; i < kod.length() && i < inputs.size(); i++) {
+                inputs.get(i).click();
+                inputs.get(i).sendKeys(String.valueOf(kod.charAt(i)));
+            }
         }
         wait(1);
     }

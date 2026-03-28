@@ -50,11 +50,30 @@ public class JoinUsPage extends CommonMethods {
     }
 
     public void ilkDevamButonunaBas() {
-        waitForClickability(driver.findElement(continueButton));
-        driver.findElement(continueButton).click();
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(continueButton));
+        } catch (Exception ignored) {}
+        jsClick(driver.findElement(continueButton));
     }
 
     public void sehirSec(String sehir) {
+        // SEE MEMBERSHIP PLANS butonuna bas (varsa, kısa süre bekle)
+        By seeMembershipBtn = By.xpath("/html/body/app-root/app-join-us-layout/div/div/app-join-us-phone/div/form/div/button");
+        try {
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(seeMembershipBtn));
+            jsClick(driver.findElement(seeMembershipBtn));
+        } catch (Exception ignored) {}
+
+        // KABUL ET modal varsa bekle ve bas
+        By agreeBtn = By.xpath("/html/body/ngb-modal-window/div/div/app-modal/div[3]/button");
+        try {
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(agreeBtn));
+            jsClick(driver.findElement(agreeBtn));
+        } catch (Exception ignored) {}
+
         try {
             getWaitObject().until(
                     org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
@@ -76,8 +95,13 @@ public class JoinUsPage extends CommonMethods {
     }
 
     public void paketSec() {
-        waitForClickability(driver.findElement(packageBox));
-        driver.findElement(packageBox).click();
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                            By.cssSelector(".ols-loader")));
+        } catch (Exception ignored) {}
+        waitForVisibility(packageBox);
+        jsClick(driver.findElement(packageBox));
     }
 
     public void ulkeSec(String ulke) {

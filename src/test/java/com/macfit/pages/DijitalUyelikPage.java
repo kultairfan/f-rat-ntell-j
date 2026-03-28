@@ -22,7 +22,7 @@ public class DijitalUyelikPage extends CommonMethods {
     public final By erkekRadio = By.cssSelector("#genderMen");
     public final By formGonderBtn = By.xpath("//button[@class='mars-button']");
     public final By kabulEtBtn = By.xpath("//button[normalize-space()='KABUL ET']");
-    public final By confirmBtn = By.xpath("//app-digital-member-otp//form//div[3]/button | //app-join-us-otp//form//div[3]/button");
+    public final By confirmBtn = By.xpath("//app-digital-member-otp/div/form/div[3]/button | //app-join-us-otp/div/form/div[3]/button");
     public final By portalOtpCloseBtn = By.xpath("//button[contains(@class,'btn-close')]");
 
     public DijitalUyelikPage() {
@@ -66,8 +66,13 @@ public class DijitalUyelikPage extends CommonMethods {
     }
 
     public void girisButton() {
-        waitForClickability(driver.findElement(girisBtn));
-        driver.findElement(girisBtn).click();
+        try {
+            getWaitObject().until(
+                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                            By.cssSelector(".ols-loader")));
+        } catch (Exception ignored) {}
+        waitForVisibility(girisBtn);
+        jsClick(driver.findElement(girisBtn));
     }
 
     public void devamet() {

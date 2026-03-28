@@ -52,16 +52,15 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void adayUyeSayfasinaGit() {
-        waitForVisibility(adayUyeMenuBtn);
-        WebElement btn = driver.findElement(adayUyeMenuBtn);
-        getJSObject().executeScript("arguments[0].click()", btn);
+        getWaitObject().until(ExpectedConditions.elementToBeClickable(adayUyeMenuBtn));
+        jsClick(driver.findElement(adayUyeMenuBtn));
         getJSObject().executeScript("document.body.style.zoom='60%'");
     }
 
     public void adayUyeEkleBtn() {
         getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(
                 By.className("ols-loader")));
-        waitForClickability(driver.findElement(adayUyeEkleBtnLoc));
+        getWaitObject().until(ExpectedConditions.elementToBeClickable(adayUyeEkleBtnLoc));
         jsClick(driver.findElement(adayUyeEkleBtnLoc));
         wait(1);
     }
