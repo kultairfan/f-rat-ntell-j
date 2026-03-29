@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/LeadYonetimi/1b.feature",
+        features = {"src/test/resources/features/LeadYonetimi"},
         glue = {
                 "com.macfit.steps.LeadYonetimi",
                 "com.macfit.steps"
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports/LeadPortalFlow/report.html",
                 "json:target/cucumber-reports/LeadPortalFlow/report.json"
         },
-        tags = "@1b10",
+        tags = "@2a10",
         dryRun = false
 )
 public class LeadPortalFlowRunner {

@@ -327,6 +327,11 @@ public class LeadPortalFlowSteps extends CommonMethods {
             SoftAssertionCollector.add("Tags beklenen: '" + beklenenTags + "' | Gercek: '" + actual + "'");
         }
     }
+    @And("iki saniye bekler")
+    public void ikisaniyebekler()
+    {
+        wait(2);
+    }
 
     // ══════════════════════════════════════════════════════════════════
     // YARDIMCI

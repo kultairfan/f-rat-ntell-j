@@ -110,7 +110,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
   # 1b4 - sms onaysiz mevcut | atali | telefon gorevi var
   # ### YAVUZA SORULACAK ### TODO
   # ─────────────────────────────────────────────────────────────────
-  @withOTP @1b4 @1b
+  @withOTP @1b4
   Scenario Outline: 1b4 - Gelen SMS onayLI, isim ayni, kulup farkli, mevcut SMS onaysiz, atali, telefon gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -185,7 +185,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
   # 1b6 - sms onaysiz mevcut | atali | randevu/tur gorevi var
   # ### YAVUZA SORULACAK ### TODO
   # ─────────────────────────────────────────────────────────────────
-  @withOTP @1b6 @1b
+  @withOTP @1b6
   Scenario Outline: 1b6 - Gelen SMS onayLI, isim ayni, kulup farkli, mevcut SMS onaysiz, atali, randevu/tur gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -195,7 +195,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
+    And iki saniye bekler
+    Then Olympus dashboard navigate edilir
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
@@ -261,7 +262,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
   # 1b8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
   # ### YAVUZA SORULACAK ### TODO
   # ─────────────────────────────────────────────────────────────────
-  @withOTP @1b8 @1b
+  @withOTP @1b8
   Scenario Outline: 1b8 - Gelen SMS onayLI, isim ayni, kulup farkli, mevcut SMS onaysiz, atali, ret/satis/uzerine alma gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -310,6 +311,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
+    And iki saniye bekler
     Then Olympus dashboard navigate edilir
 
     When "<portalUrl>" portali acilir

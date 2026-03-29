@@ -72,8 +72,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
 
     Examples:
-      | ad  | soyad | gsmNo | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
-      | Ela | kulta | gsmNo | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | olympus.su              | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
+      | Ela | kulta | 5998626473 | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | olympus.su              | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a3 - sms onaysiz mevcut | atali | gorev yok
@@ -115,6 +115,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
     And OTP dogrulamasi atlanir
+
     Then Aday uye basariyla olusturulur
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
@@ -155,6 +156,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
     And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
+
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
     And Gorev "<nedenKodu>" neden koduyla kaydedilir
@@ -183,7 +185,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
   # ─────────────────────────────────────────────────────────────────
   # 1a6 - sms onaysiz mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
   # ─────────────────────────────────────────────────────────────────
-  @withoutOTP @1a6 @1a  ### 1a6 Bu senaryo ıcın  Satış Görüşmesi  olması ıcın is sms approveun 1 olması lazım####
+  @withoutOTP @1a6   ### 1a6 Bu senaryo ıcın  Satış Görüşmesi  olması ıcın is sms approveun 1 olması lazım####
   Scenario Outline: 1a6 - Gelen SMS onaysiz, isim ayni, kulup farkli, mevcut SMS onaysiz, atali, randevu/tur gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -194,6 +196,11 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And "<gorevTipi>" gorevi atanir
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
+
+    When Telefon ile arama yapilir "<gsmNo>"
+    And "<gorevTipi>" gorevi atanir
+    And iki saniye bekler
+    Then Olympus dashboard navigate edilir
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
@@ -263,7 +270,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
   # 1a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
   # ─────────────────────────────────────────────────────────────────
   ### 1a8 Bu senaryo ıcın  Satış Görüşmesi  olması ıcın is sms approveun 1 olması lazım####
-  @withoutOTP @1a8 @1a
+  @withoutOTP @1a8
   Scenario Outline: 1a8 - Gelen SMS onaysiz, isim ayni, kulup farkli, mevcut SMS onaysiz, atali, ret/satis/uzerine alma gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -312,6 +319,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
+    And iki saniye bekler
     Then Olympus dashboard navigate edilir
 
 

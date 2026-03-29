@@ -84,10 +84,11 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
         <configuration>
+          <argLine>-Djavax.net.ssl.trustAll=true</argLine>
           <includes>
             <include>**/*TestRunner.java</include>
             <include>**/*Test.java</include>
-              <include>**/*Steps.java</include>
+            <include>**/*Steps.java</include>
           </includes>
           <testFailureIgnore>false</testFailureIgnore>
         </configuration>
