@@ -8,25 +8,19 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		
-		features = "src/test/resources/features/",
-		glue = "com.macfit.steps",
-		
-		dryRun = false,
 
-		
-		monochrome = true,
-
-		
-		tags = "@ela",
-
+		features = {"src/test/resources/features"},
+		glue = {
+				"com.macfit.steps.LeadYonetimi",
+				"com.macfit.steps"
+		},
 		plugin = {
-				
-				//"pretty",
-				"html:target/cucumber-default-report.html",
-				"json:target/cucumber.json",
-				"rerun:target/failed.txt"
-				}
+				"pretty",
+				"html:target/cucumber-reports/LeadPortalFlow/report.html",
+				"json:target/cucumber-reports/LeadPortalFlow/report.json"
+		},
+		tags = "@1a3",
+		dryRun = false
 
 )
 

@@ -13,7 +13,7 @@ public class JoinUsPage extends CommonMethods {
     public final By cityComboBox        = By.cssSelector("ng-select[id='city'] input[role='combobox']");
     public final By countryComboBox     = By.cssSelector("ng-select[id='country'] input[role='combobox']");
     public final By clubComboBox        = By.cssSelector("div[class='ng-select-container'] input[role='combobox']");
-    public final By packageBox          = By.cssSelector("div[class='mars-box'] div:nth-child(1) div:nth-child(1) div:nth-child(4)");
+    public final By packageBox          = By.xpath("(//button[contains(normalize-space(),'CHOOSE PLAN') or contains(normalize-space(),'Choose Plan') or contains(normalize-space(),'choose plan') or contains(@class,'plan')])[1]");
     public final By nameInput           = By.id("firstName");
     public final By surnameInput        = By.id("lastName");
     public final By emailInput          = By.id("email");
@@ -53,24 +53,27 @@ public class JoinUsPage extends CommonMethods {
         try {
             getWaitObject().until(
                     org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(continueButton));
+            jsClick(driver.findElement(continueButton));
         } catch (Exception ignored) {}
-        jsClick(driver.findElement(continueButton));
     }
 
     public void sehirSec(String sehir) {
         // SEE MEMBERSHIP PLANS butonuna bas (varsa, kısa süre bekle)
-        By seeMembershipBtn = By.xpath("/html/body/app-root/app-join-us-layout/div/div/app-join-us-phone/div/form/div/button");
+        By seeMembershipBtn = By.cssSelector("app-join-us-phone form button");
         try {
             new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
                     .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(seeMembershipBtn));
             jsClick(driver.findElement(seeMembershipBtn));
         } catch (Exception ignored) {}
 
-        // KABUL ET modal varsa bekle ve bas
-        By agreeBtn = By.xpath("/html/body/ngb-modal-window/div/div/app-modal/div[3]/button");
+        // KABUL ET / AGREE modal varsa bekle ve bas (birden fazla olası locator dene)
+        By agreeBtn = By.xpath(
+            "//button[normalize-space()='KABUL ET'] | " +
+            "//ngb-modal-window//app-modal//div[last()]/button | " +
+            "//ngb-modal-window//button[last()]");
         try {
-            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
-                    .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(agreeBtn));
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(8))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(agreeBtn));
             jsClick(driver.findElement(agreeBtn));
         } catch (Exception ignored) {}
 
@@ -96,12 +99,28 @@ public class JoinUsPage extends CommonMethods {
 
     public void paketSec() {
         try {
-            getWaitObject().until(
-                    org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(120))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
                             By.cssSelector(".ols-loader")));
         } catch (Exception ignored) {}
-        waitForVisibility(packageBox);
-        jsClick(driver.findElement(packageBox));
+
+        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+                .until(d -> {
+                    Object result = getJSObject().executeScript(
+                            "var els = document.querySelectorAll('button, div, a');" +
+                                    "var debug = 'cnt=' + els.length;" +
+                                    "for (var i = 0; i < els.length; i++) {" +
+                                    "  var tc = (els[i].textContent || '').replace(/\\s+/g,' ').trim();" +
+                                    "  var it = (els[i].innerText   || '').replace(/\\s+/g,' ').trim();" +
+                                    "  if (tc.toUpperCase() === 'CHOOSE PLAN' || it.toUpperCase() === 'CHOOSE PLAN') {" +
+                                    "    els[i].scrollIntoView();" +
+                                    "    els[i].click();" +
+                                    "    return 'CLICKED:' + i + ':' + tc;" +
+                                    "  }" +
+                                    "}" +
+                                    "return debug;");
+                    return String.valueOf(result).startsWith("CLICKED");
+                });
     }
 
     public void ulkeSec(String ulke) {
@@ -116,7 +135,6 @@ public class JoinUsPage extends CommonMethods {
             jsClick(input);
         }
         input.sendKeys(ulke);
-        wait(1);
         waitForVisibility(opt);
         driver.findElement(opt).click();
         driver.findElement(By.xpath("//button[@type='submit']")).click();

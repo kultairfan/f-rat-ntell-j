@@ -14,15 +14,18 @@ public class OlympusPage extends CommonMethods {
 
     public final By kullaniciAdiInput = By.id("userName");
     public final By sifreInput        = By.id("password");
-    public final By girisButon        = By.xpath("//button[@id='add-btn']");
+    public final By girisButon        = By.id("add-btn");
     public final By adayUyeMenuBtn    = By.xpath("(//button[contains(@class,'link-btn') and contains(.,'Aday Üye')])[1]");
     public final By adayUyeEkleBtnLoc = By.xpath("//button[normalize-space()='Aday Üye Ekle']");
     public final By uyeAramaInput     = By.id("gsmNo");
-    public final By uyeAramaBtn       = By.xpath("//button[@id='filter-phone-search-btn']");
-    public final By ucNoktaBtn        = By.xpath("//i[@class='mdi mdi-dots-horizontal']");
+    public final By uyeAramaBtn       = By.id("filter-phone-search-btn");
+    public final By ucNoktaBtn        = By.cssSelector("i.mdi.mdi-dots-horizontal");
     public final By uzerineAlIkon     = By.xpath("//i[contains(@class,'ri-file-transfer-line')] | //*[normalize-space()='Üzerine Al']");
-    public final By evetButon         = By.xpath("//button[normalize-space()='Evet']");
-    public final By kaydetButon       = By.xpath("//button[@id='add-btn']");
+    public final By evetButon         = By.xpath("//button[text()='Evet']");
+    public final By kaydetButon       = By.id("add-btn");
+
+    // true → olympus.su, false → test.st5 (Hooks tarafından her senaryo öncesi set edilir)
+    public static boolean useOlympusSu = false;
 
     public OlympusPage() {
         PageFactory.initElements(driver, this);
@@ -33,15 +36,37 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void olympusLogin() {
-        driver.get(ConfigsReader.getProperty("url"));
+        String username = useOlympusSu
+                ? ConfigsReader.getProperty("olympusu.username")
+                : ConfigsReader.getProperty("username");
+        String password = useOlympusSu
+                ? ConfigsReader.getProperty("olympusu.password")
+                : ConfigsReader.getProperty("password");
+
+        String currentUrl = driver.getCurrentUrl();
+
+        // Speed: zaten dashboard'daysa tekrar login yapmadan devam et
+        if (currentUrl.contains("olympusdev-dashboard") && !currentUrl.contains("/auth/login")) {
+            try {
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                        .until(ExpectedConditions.elementToBeClickable(adayUyeMenuBtn));
+                return;
+            } catch (Exception ignored) {}
+        }
+
+        // Speed: zaten login sayfasindaysa tekrar navigate etme
+        if (!currentUrl.contains("/auth/login")) {
+            driver.get(ConfigsReader.getProperty("url"));
+        }
         try {
             waitForVisibility(kullaniciAdiInput);
             driver.findElement(kullaniciAdiInput).clear();
-            driver.findElement(kullaniciAdiInput).sendKeys(ConfigsReader.getProperty("username"));
+            driver.findElement(kullaniciAdiInput).sendKeys(username);
             driver.findElement(sifreInput).clear();
-            driver.findElement(sifreInput).sendKeys(ConfigsReader.getProperty("password"));
+            driver.findElement(sifreInput).sendKeys(password);
             driver.findElement(girisButon).click();
-            wait(2);
+            // Login sonrası dashboard elementinin gelmesini bekle
+            getWaitObject().until(ExpectedConditions.elementToBeClickable(adayUyeMenuBtn));
         } catch (Exception ignored) {
             // Zaten login durumunda — uygulama dashboard'a yonlendirdi
         }
@@ -58,11 +83,9 @@ public class OlympusPage extends CommonMethods {
     }
 
     public void adayUyeEkleBtn() {
-        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(
-                By.className("ols-loader")));
+        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
         getWaitObject().until(ExpectedConditions.elementToBeClickable(adayUyeEkleBtnLoc));
         jsClick(driver.findElement(adayUyeEkleBtnLoc));
-        wait(1);
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -70,21 +93,16 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void uyeAramaIle(String gsmNo) {
-        try {
-            getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.cssSelector("ngb-modal-window")));
-        } catch (Exception ignored) { }
-
-        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(
-                By.className("ols-loader")));
-
         waitForVisibility(uyeAramaInput);
+
         driver.findElement(uyeAramaInput).clear();
         driver.findElement(uyeAramaInput).sendKeys(gsmNo);
         jsClick(driver.findElement(uyeAramaBtn));
-        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
-    }
 
+        By firstRow = By.xpath("//table[contains(@class,'lead-table')]//tbody/tr[1]");
+        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
+                .until(org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated(firstRow));
+    }
     // ══════════════════════════════════════════════════════════════════
     // ÜZERINE AL
     // ══════════════════════════════════════════════════════════════════
@@ -110,23 +128,44 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void gorevMenuAc(String gorevTipi) {
-        waitForClickability(driver.findElement(ucNoktaBtn));
-        driver.findElement(ucNoktaBtn).click();
+        // 3 nokta stale olabiliyor; locator bazli tekrar bulup tikla
+        for (int i = 0; i < 3; i++) {
+            try {
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(8))
+                        .until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(ucNoktaBtn));
+
+                WebElement menuBtn = driver.findElement(ucNoktaBtn);
+                getJSObject().executeScript("arguments[0].click();", menuBtn);
+                break;
+            } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                if (i == 2) throw e;
+                try { Thread.sleep(300); } catch (InterruptedException ignored) {}
+            }
+        }
+
         if (gorevTipi.equals("Telefon Aramasi Planla")) {
             By aramaGoreviLoc = By.xpath("//*[normalize-space()='Arama Görevi Planla']");
             waitForVisibility(aramaGoreviLoc);
-            driver.findElement(aramaGoreviLoc).click();
+            jsClick(driver.findElement(aramaGoreviLoc));
+
             By telefonLoc = By.xpath("//*[contains(normalize-space(),'Telefon Araması')]");
-            getWaitObject().until(ExpectedConditions.presenceOfElementLocated(telefonLoc));
+            waitForVisibility(telefonLoc);
             jsClick(driver.findElement(telefonLoc));
+
         } else if (gorevTipi.trim().equals("Satis Gorusmesi") || gorevTipi.trim().equals("Satış Görüşmesi")) {
             By gorevLoc = By.xpath("//*[normalize-space()='Satış Görüşmesi']");
-            waitForClickability(driver.findElement(gorevLoc));
-            driver.findElement(gorevLoc).click();
+            waitForVisibility(gorevLoc);
+            jsClick(driver.findElement(gorevLoc));
+
+        } else if (gorevTipi.trim().equals("Tur Olustur") || gorevTipi.trim().equals("Tur Oluştur")) {
+            By gorevLoc = By.xpath("//*[contains(normalize-space(),'Tur Olu')]");
+            waitForVisibility(gorevLoc);
+            jsClick(driver.findElement(gorevLoc));
+
         } else {
             By gorevLoc = By.xpath("//*[normalize-space()='" + gorevTipi + "']");
-            waitForClickability(driver.findElement(gorevLoc));
-            driver.findElement(gorevLoc).click();
+            waitForVisibility(gorevLoc);
+            jsClick(driver.findElement(gorevLoc));
         }
     }
 
@@ -160,9 +199,12 @@ public class OlympusPage extends CommonMethods {
     }
 
     public String getIlkSatirTags() {
-        By loc = By.xpath("//table[contains(@class,'lead-table')]//tbody/tr[1]/td[13]/div");
-        waitForVisibility(loc);
-        return driver.findElement(loc).getText().trim();
+        By rowLoc = By.xpath("//table[contains(@class,'lead-table')]//tbody/tr[1]/td[13]");
+        waitForVisibility(rowLoc);
+        WebElement td = driver.findElement(rowLoc);
+        java.util.List<WebElement> divs = td.findElements(By.xpath("./div"));
+        if (divs.isEmpty()) return "";
+        return divs.get(0).getText().trim();
     }
 
     /**
@@ -197,29 +239,47 @@ public class OlympusPage extends CommonMethods {
         return db.smsCodeGetir(telefonWith90);
     }
     public void kulupKolonunuAc() {
-        By ayarButonu    = By.xpath("//app-lead//thead/tr/th[last()]//button");
-        By kulupLabel    = By.xpath("//label[@for='lead-table6']");
+        By ayarButonu    = By.cssSelector("app-lead thead tr th:last-child button");
+        By kulupLabel    = By.cssSelector("label[for='lead-table6']");
         By kulupCheckbox = By.id("lead-table6");
 
-        // Tablo tamamen yüklenene kadar bekle
-        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
-        getWaitObject().until(ExpectedConditions.presenceOfElementLocated(ayarButonu));
+        // Loader bitene kadar bekle (dev ortamında yavaş olabilir — 60s)
+        try {
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
+        } catch (Exception ignored) {}
+
+        // Tablo zaten 6+ sütun içeriyorsa (Kulüp kolonu açıksa) — ayar panelini açmaya gerek yok
+        java.util.List<WebElement> mevcutSutunlar = driver.findElements(
+            By.xpath("//table[contains(@class,'lead-table')]//thead/tr/th"));
+        if (mevcutSutunlar.size() >= 6) {
+            String col6Text = mevcutSutunlar.get(5).getText().trim();
+            System.out.println("Column 6 header: '" + col6Text + "'");
+            if (col6Text.contains("Kulüp") || col6Text.contains("Kulup") || col6Text.contains("Club")) {
+                System.out.println("Kulüp kolonu zaten görünür (" + mevcutSutunlar.size() + " sütun), ayar atlandı.");
+                return;
+            }
+        }
+
+        getWaitObject().until(ExpectedConditions.elementToBeClickable(ayarButonu));
         jsClick(driver.findElement(ayarButonu));
 
         waitForVisibility(kulupLabel);
         WebElement kulupElement = driver.findElement(kulupCheckbox);
-
-        // isSelected() Angular'da güvenilmez — JS ile kontrol et
         Boolean isChecked = (Boolean) getJSObject().executeScript("return arguments[0].checked", kulupElement);
         if (isChecked == null || !isChecked) {
             jsClick(driver.findElement(kulupLabel));
             System.out.println("Kulüp kolonu açıldı.");
+            try {
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+                    .until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
+            } catch (Exception ignored) {}
         } else {
             System.out.println("Kulüp kolonu zaten açık.");
         }
 
-        getWaitObject().until(ExpectedConditions.presenceOfElementLocated(ayarButonu));
         jsClick(driver.findElement(ayarButonu));
     }
+
 
 }

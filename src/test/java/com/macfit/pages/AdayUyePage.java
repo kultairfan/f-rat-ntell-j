@@ -21,12 +21,12 @@ public class AdayUyePage extends CommonMethods {
     public final By genderErkek      = By.id("genderMen");
     public final By genderKadin      = By.id("genderWomen");
     public final By btnDevamEt       = By.id("add-btn");
-    public final By adayUyeEkleX = By.xpath("//button[@class='btn btn-light']");
+    public final By adayUyeEkleX = By.cssSelector("button.btn.btn-light");
 
     // ── OTP ──────────────────────────────────────────────────────────
     public final By btnOtpAtla  = By.xpath("//button[normalize-space()='Atla']");
     public final By inputOtp    = By.cssSelector("input[id^='otp_0_']");
-    public final By btnConfirm  = By.xpath("//button[@class='confirm-button']");
+    public final By btnConfirm  = By.cssSelector("button.confirm-button");
 
     // ── Başarı mesajı ────────────────────────────────────────────────
     public final By toastBasari = By.xpath(
@@ -64,14 +64,15 @@ public class AdayUyePage extends CommonMethods {
         // Kaynak Bilgileri — native select
         kaynakSec(kaynak);
 
-        wait(1);
+        try {
+            getWaitObject().until(
+                org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                    By.className("ols-loader")));
+        } catch (Exception ignored) {}
         click(driver.findElement(btnDevamEt));
     }
 
     private void kaynakSec(String kaynak) {
-        // Loader kaybolana kadar bekle
-        getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(
-                By.className("ols-loader")));
         waitForVisibility(kaynakDropdown);
         Select select = new Select(driver.findElement(kaynakDropdown));
         select.selectByValue("16"); // Kulübe gelen = value 16, görünen text aramak yerine direkt value
@@ -83,48 +84,37 @@ public class AdayUyePage extends CommonMethods {
 
     public void otpAtla() {
         try {
-            wait(2);
+            // OTP modal veya kapat butonunun gelmesini kısa süre bekle
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(3))
+                .until(org.openqa.selenium.support.ui.ExpectedConditions.or(
+                    org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(btnOtpAtla),
+                    org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(adayUyeEkleX),
+                    org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(
+                        By.xpath("//button[normalize-space()='Geri']"))
+                ));
+        } catch (Exception ignored) {}
 
+        try {
             List<WebElement> geriList = driver.findElements(By.xpath("//button[normalize-space()='Geri']"));
-            if (!geriList.isEmpty()) {
-                click(geriList.get(0));
-                wait(1);
-                return;
-            }
+            if (!geriList.isEmpty()) { click(geriList.get(0)); return; }
 
             List<WebElement> atlaList = driver.findElements(btnOtpAtla);
-            if (!atlaList.isEmpty()) {
-                click(atlaList.get(0));
-                wait(1);
-                return;
-            }
+            if (!atlaList.isEmpty()) { click(atlaList.get(0)); return; }
 
             List<WebElement> closeList = driver.findElements(adayUyeEkleX);
             if (!closeList.isEmpty()) {
-                try {
-                    click(closeList.get(0));
-                } catch (Exception e) {
-                    getJSObject().executeScript("arguments[0].click();", closeList.get(0));
-                }
-                wait(1);
-                return;
+                try { click(closeList.get(0)); }
+                catch (Exception e) { getJSObject().executeScript("arguments[0].click();", closeList.get(0)); }
             }
-
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
     }
 
     public void otpDogrula(String kod) {
-        wait(2);
-        // 4 ayrı input kutusuna tek tek yaz
-        List<WebElement> otpInputlar = driver.findElements(
-                By.cssSelector("input[id^='otp_0_']"));
-
+        waitForVisibility(inputOtp);
+        List<WebElement> otpInputlar = driver.findElements(inputOtp);
         if (!otpInputlar.isEmpty() && kod != null) {
-            // Tüm kodu ilk input'a gönder — Angular otomatik dağıtıyor
             otpInputlar.get(0).click();
             otpInputlar.get(0).sendKeys(kod);
-            wait(1);
         }
     }
 
@@ -132,7 +122,11 @@ public class AdayUyePage extends CommonMethods {
         By confirmLoc = By.xpath("//ngb-modal-window//app-modal-sms//div[3]/div[1]/div/button[2]");
         waitForVisibility(confirmLoc);
         click(driver.findElement(confirmLoc));
-        wait(2);
+        // Modal kapanana kadar bekle
+        try {
+            getWaitObject().until(
+                org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(confirmLoc));
+        } catch (Exception ignored) {}
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -143,7 +137,6 @@ public class AdayUyePage extends CommonMethods {
         try {
             waitForVisibility(toastBasari);
         } catch (Exception ignored) { }
-        wait(2);
     }
     public void adayUyePopupKapat() {
         try {

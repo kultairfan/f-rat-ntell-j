@@ -1,79 +1,101 @@
-@LeadPortalFlow
+@LeadPortalFlow4a
 Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
-  # Kural: Gelen lead SMS onaysiz | Mevcut isim FARKLI | Kulup FARKLI
-  # portalAd/portalSoyad mevcut isimden FARKLI girilir
-  # Kulup FARKLI: portal kulup = MACFit 42 Maslak (Fisekhane'den farkli)
-
-  @withoutOTP @4a1
+  # ─────────────────────────────────────────────────────────────────
+  # 4a1 - sms onaysiz mevcut | atamasiz | gorev var/yok
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a1 @4a
   Scenario Outline: 4a1 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atanmamis, gorev var/yok
-    Given Olympus dashboard acilir ve giris yapilir
-    When Aday uye sayfasina gidilir
-    And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
-    Then Aday uye basariyla olusturulur
 
-    When "<portalUrl>" portali acilir
+    When "<vucutUrl>" portali acilir ve devam edilir
     And Portala telefon numarasi girilir "<gsmNo>"
     And Portal sehir "<sehir>" secilir
-    And Portal kulup "<portalKulup>" secilir
-    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
-    And Portal formu gonderilir
+    And Portal kulup "<vucutKulup>" secilir
+    And Portal devam butonuna basilir
+    And Vucut form bilgileri girilir ad "<ad>" soyad "<soyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Vucut formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "42 Maslak" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+   # And SMS kodu DBden cekilip OTP alanina girilir
+   # And OTP Dogrula butonuna basilir
+   # Then avm disi formunun gonderildigi dogrulanir
+    And OTP dogrulamasi kapatilir
+
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<portalAd>" gorunur
-    And Ilk satirda soyad "<portalSoyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
-
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags                        | gorevTipi      | nedenKodu           |
-      | Ela | kulta | 5981110561 | testlead4a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Web Form - Günlük Üyelik Kampanyası | Randevu Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup            |
+      | Ela | kulta | 5981110501 | testlead4a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Automation    | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
 
-  @withoutOTP @4a2
+  # ─────────────────────────────────────────────────────────────────
+  # 4a2 - sms onayLI mevcut | atamasiz | gorev var/yok
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a2 @4a  # TODO satıs temsılcısıne atalı olmayacak joın us gıdılıcek vucut formuna gıdıcek
   Scenario Outline: 4a2 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onayLI, atanmamis, gorev var/yok
-    Given Olympus dashboard acilir ve giris yapilir
-    When Aday uye sayfasina gidilir
-    And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
-    Then Aday uye basariyla olusturulur
 
-    When "<portalUrl>" portali acilir
+    When "<vucutUrl>" portali acilir ve devam edilir
     And Portala telefon numarasi girilir "<gsmNo>"
-    And JoinUs devam butonuna basilir
-    And JoinUs ilk devam butonuna basilir
     And Portal sehir "<sehir>" secilir
-    And JoinUs kulup "<portalKulup>" secilir
-    And JoinUs paket secilir
-    And JoinUs ulke "<ulke>" secilir
-    And JoinUs formu doldurulur ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>" personelno "<personelNo>"
-    And JoinUs onay butonuna basilir
-    Then Portal OTP dogrulamasi atlanir
+    And Portal kulup "<vucutKulup>" secilir
+    And Portal devam butonuna basilir
+    And Vucut form bilgileri girilir ad "<ad>" soyad "<soyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Vucut formu gonderilir
+    And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
+    And Portal OTP confirm butonuna basilir
+    And iki saniye bekler
+    And iki saniye bekler
+    And iki saniye bekler
 
-    Given Olympus sekmesine gecilir
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "42 Maslak" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And OTP dogrulamasi kapatilir
+
+
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<ad>" gorunur
-    And Ilk satirda soyad "<soyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
-
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
-
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110562 | testlead4a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup            |
+      | Ela | kulta | 5998626473 | testlead4a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | kulta         | Flatofis Haliç | System                  | steps: Success | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
 
-  @withoutOTP @4a3
+  # ─────────────────────────────────────────────────────────────────
+  # 4a3 - sms onaysiz mevcut | atali | gorev yok
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a3 @4a
   Scenario Outline: 4a3 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, gorev yok
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -91,27 +113,30 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<portalAd>" gorunur
-    And Ilk satirda soyad "<portalSoyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
-
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110563 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Ücretsiz Ölçüm |  Satış Görüşmesi  | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
+      | Ela | kulta | 5981110503 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Katalon    | Automation    | Flatofis Haliç | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
 
-  @withoutOTP @4a4
+  # ─────────────────────────────────────────────────────────────────
+  # 4a4 - sms onaysiz mevcut | atali | telefon gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  # ####################  BU SENARYO KALDIRILDI. ####################
   Scenario Outline: 4a4 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, telefon gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
     And OTP dogrulamasi atlanir
+
     Then Aday uye basariyla olusturulur
+    When Telefon ile arama yapilir "<gsmNo>"
+    And "<gorevTipi>" gorevi atanir
+    And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
@@ -127,53 +152,65 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<portalAd>" gorunur
-    And Ilk satirda soyad "<portalSoyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110564 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
+      | Ela | kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
-  @withoutOTP @4a5
+  # ─────────────────────────────────────────────────────────────────
+  # 4a5 - sms onayLI mevcut | atali | telefon gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a5 @4a
   Scenario Outline: 4a5 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onayLI, atali, telefon gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
+    And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
+    And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
 
-    When "<portalUrl>" portali acilir
-    And Portala telefon numarasi girilir "<gsmNo>"
-    And Portal sehir "<sehir>" secilir
-    And Portal kulup "<portalKulup>" secilir
-    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
-    And Portal formu gonderilir
-    Then Portal OTP dogrulamasi atlanir
-
-    Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<ad>" gorunur
-    And Ilk satirda soyad "<soyad>" gorunur
+    And "<gorevTipi>" gorevi atanir
+    And Gorev "<nedenKodu>" neden koduyla kaydedilir
+
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "Fişekhane" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And OTP dogrulamasi kapatilir
+
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
+    When Telefon ile arama yapilir "<gsmNo>"
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags                        | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110565 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | 18.09.2000        | Fişekhane     | System                  | Web Form - Günlük Üyelik Kampanyası | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi              | nedenKodu           |
+      | Ela | kulta | 5981110505 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | kulta         | 42 Maslak     | test.st5                |              | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
-  @withoutOTP @4a6
+  # ─────────────────────────────────────────────────────────────────
+  # 4a6 - sms onaysiz mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a6 @4a  ### 4a6 Bu senaryo ıcın  Satış Görüşmesi  olması ıcın is sms approveun 1 olması lazım####
   Scenario Outline: 4a6 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, randevu/tur gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -181,6 +218,10 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And OTP dogrulamasi atlanir
     Then Aday uye basariyla olusturulur
 
+    When Telefon ile arama yapilir "<gsmNo>"
+    And "<gorevTipi>" gorevi atanir
+    And Gorev "<nedenKodu>" neden koduyla kaydedilir
+
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
     And JoinUs devam butonuna basilir
@@ -195,59 +236,74 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<portalAd>" gorunur
-    And Ilk satirda soyad "<portalSoyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+  #görevleri kapat ıcın TODO
+    # işlemtarihçesi için TODO
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110566 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm |  Satış Görüşmesi  | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu         |
+      | Ela | kulta | 5981110506 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | test.st5                | Ücretsiz Ölçüm | Randevu Planla | Randevu Ayarlandı |
 
-  @withoutOTP @4a7
+  # ─────────────────────────────────────────────────────────────────
+  # 4a7 - sms onayLI mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a7 @4a
   Scenario Outline: 4a7 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onayLI, atali, randevu/tur gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
+    And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
+    And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
+
+    When Telefon ile arama yapilir "<gsmNo>"
+    And "<gorevTipi>" gorevi atanir
+    And Gorev "<nedenKodu>" neden koduyla kaydedilir
+
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
     And Portal sehir "<sehir>" secilir
     And Portal kulup "<portalKulup>" secilir
+    Then Portal devam butonuna basilir
     And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Portal Kulup ikinci kez değiştirilir
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<ad>" gorunur
-    And Ilk satirda soyad "<soyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
+
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags                        | gorevTipi      | nedenKodu           |
-      | Ela | kulta | 5981110567 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | 18.09.2000        | Fişekhane     | System                  | Web Form - Günlük Üyelik Kampanyası | Randevu Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags      | gorevTipi      | nedenKodu         |
+      | Ela | kulta | 5981110509 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | Flatofis Haliç | System                  | Steps: PhoneNumber | Randevu Planla | Randevu Ayarlandı |
 
+  # ─────────────────────────────────────────────────────────────────
+  # 4a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  ### 4a8 Bu senaryo ıcın  Satış Görüşmesi  olması ıcın is sms approveun 1 olması lazım####
   @withoutOTP @4a8
   Scenario Outline: 4a8 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, ret/satis/uzerine alma gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
     And OTP dogrulamasi atlanir
+
     Then Aday uye basariyla olusturulur
+    When Telefon ile arama yapilir "<gsmNo>"
+    And "<gorevTipi>" gorevi atanir
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
@@ -263,80 +319,98 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<portalAd>" gorunur
-    And Ilk satirda soyad "<portalSoyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110568 | testlead4a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           |
+      | Ela | kulta | 5981110508 | testlead4a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
 
-  @withoutOTP @4a9
+  # ─────────────────────────────────────────────────────────────────
+  # 4a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a9 @4a
   Scenario Outline: 4a9 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onayLI, atali, ret/satis/uzerine alma gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
+    And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
+    And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
 
-    When "<portalUrl>" portali acilir
-    And Portala telefon numarasi girilir "<gsmNo>"
-    And Portal sehir "<sehir>" secilir
-    And Portal kulup "<portalKulup>" secilir
-    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
-    And Portal formu gonderilir
-    Then Portal OTP dogrulamasi atlanir
-
-    Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<ad>" gorunur
-    And Ilk satirda soyad "<soyad>" gorunur
+    And "<gorevTipi>" gorevi atanir
+    And iki saniye bekler
+    Then Olympus dashboard navigate edilir
+
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "Fişekhane" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And OTP dogrulamasi kapatilir
+
+
+    Given Olympus dashboard acilir ve giris yapilir
+    When Aday uye dashboarda gidilir
+    When ortak random gsm no ile telefon aramasi yapilir
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
-    When Ilk satirda uzerine alinir
-    And "<gorevTipi>" gorevi atanir
-    And Gorev "<nedenKodu>" neden koduyla kaydedilir
-
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags                        | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110569 | testlead4a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | 18.09.2000        | Fişekhane     | System                  | Web Form - Günlük Üyelik Kampanyası |  Satış Görüşmesi  | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu         |
+      | Ela | kulta | 5981110527 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | kulta         | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Randevu Ayarlandı |
 
-  @withoutOTP @4a10
+  # ─────────────────────────────────────────────────────────────────
+  # 4a10 - sms onayLI mevcut | atali | gorev yok
+  # ─────────────────────────────────────────────────────────────────
+  @withoutOTP @4a10 @4a
   Scenario Outline: 4a10 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onayLI, atali, gorev yok
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
-    And OTP dogrulamasi atlanir
+    And SMS kodu DBden cekilip OTP girilir "<gsmNo>"
+    And OTP confirm butonuna basilir
     Then Aday uye basariyla olusturulur
 
-    When "<portalUrl>" portali acilir
-    And Portala telefon numarasi girilir "<gsmNo>"
-    And JoinUs devam butonuna basilir
-    And JoinUs ilk devam butonuna basilir
-    And Portal sehir "<sehir>" secilir
-    And JoinUs kulup "<portalKulup>" secilir
-    And JoinUs paket secilir
-    And JoinUs ulke "<ulke>" secilir
-    And JoinUs formu doldurulur ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>" personelno "<personelNo>"
-    And JoinUs onay butonuna basilir
-    Then Portal OTP dogrulamasi atlanir
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "Fişekhane" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And OTP dogrulamasi kapatilir
 
-    Given Olympus sekmesine gecilir
+
+    Given Olympus dashboard acilir ve giris yapilir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    Then Ilk satirda ad "<ad>" gorunur
-    And Ilk satirda soyad "<soyad>" gorunur
+    Then Ilk satirda ad "<expectedAd>" gorunur
+    And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   |
-      | Ela | kulta | 5981110570 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | yeniisim | yenisoyad   | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Ücretsiz Ölçüm |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags |
+      | Ela | kulta | 5981110510 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Ela        | kulta         | 42 Maslak     | test.st5                |              |
