@@ -99,12 +99,12 @@ public class JoinUsPage extends CommonMethods {
 
     public void paketSec() {
         try {
-            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(120))
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(com.macfit.utils.Constants.LOADER_WAIT_TIME))
                     .until(org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
                             By.cssSelector(".ols-loader")));
         } catch (Exception ignored) {}
 
-        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(30))
                 .until(d -> {
                     Object result = getJSObject().executeScript(
                             "var els = document.querySelectorAll('button, div, a');" +

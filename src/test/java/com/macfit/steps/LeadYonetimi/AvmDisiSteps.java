@@ -92,9 +92,7 @@ public class AvmDisiSteps extends CommonMethods {
 
         for (int i = 0; i < 15 && kod == null; i++) {
             kod = olympusPage.getSmsKodu("90" + ortakGsmNo);
-            if (kod == null) {
-                wait(1);
-            }
+            if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
 
         Assert.assertNotNull("SMS kodu alinamadi! GSM: " + ortakGsmNo, kod);

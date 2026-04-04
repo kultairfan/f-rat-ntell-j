@@ -15,6 +15,7 @@ import org.openqa.selenium.WindowType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class LeadPortalFlowSteps extends CommonMethods {
 
@@ -102,7 +103,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
         String kod = null;
         for (int i = 0; i < 10 && kod == null; i++) {
             kod = olympusPage.getSmsKodu("90" + randomGsmNo);
-            if (kod == null) wait(1);
+            if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
         Assert.assertNotNull("SMS kodu alinamadi!", kod);
         adayUyePage.otpDogrula(kod);
@@ -242,7 +243,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
                             String kod = null;
                             for (int i = 0; i < 15 && kod == null; i++) {
                                 kod = olympusPage.getSmsKodu("90" + randomGsmNo);
-                                if (kod == null) wait(1);
+                                if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
                             }
                             if (kod != null) {
                                 List<org.openqa.selenium.WebElement> oi = driver.findElements(By.cssSelector("input[id^='otp_0_']"));
@@ -315,7 +316,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
                     String kod = null;
                     for (int i = 0; i < 15 && kod == null; i++) {
                         kod = olympusPage.getSmsKodu("90" + randomGsmNo);
-                        if (kod == null) wait(1);
+                        if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
                     }
                     if (kod != null) {
                         List<org.openqa.selenium.WebElement> otpInputs = driver.findElements(By.cssSelector("input[id^='otp_0_']"));
@@ -403,7 +404,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
         String kod = null;
         for (int i = 0; i < 10 && kod == null; i++) {
             kod = olympusPage.getSmsKodu("90" + randomGsmNo);
-            if (kod == null) wait(1);
+            if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
         Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
         List<WebElement> inputs = driver.findElements(
@@ -487,16 +488,18 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @Given("Olympus sekmesine gecilir")
     public void olympusSekmesineGecilir() {
-        // Olympus URL'ini içeren sekmeye geç
-        String olympusHandle = driver.getWindowHandles().stream()
-            .filter(h -> {
-                driver.switchTo().window(h);
-                return driver.getCurrentUrl().contains("olympus") ||
-                       driver.getCurrentUrl().contains("marsathletic");
-            })
-            .findFirst()
-            .orElse(new ArrayList<>(driver.getWindowHandles()).get(0));
-        driver.switchTo().window(olympusHandle);
+        String olympusHandle = null;
+        for (String h : driver.getWindowHandles()) {
+            driver.switchTo().window(h);
+            String url = driver.getCurrentUrl();
+            if (url.contains("olympus") || url.contains("marsathletic")) {
+                olympusHandle = h;
+                break;
+            }
+        }
+        if (olympusHandle == null) {
+            driver.switchTo().window(new ArrayList<>(driver.getWindowHandles()).get(0));
+        }
         waitForVisibility(By.id("gsmNo"));
     }
 
@@ -546,7 +549,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Ilk satirda ad {string} gorunur")
     public void ilkSatirdaAdGorunur(String expected) {
-        String gercek = olympusPage.getIlkSatirAd();
+        String gercek = bekleyerekOku(() -> olympusPage.getIlkSatirAd(), expected, 15);
         if (!gercek.toLowerCase().contains(expected.toLowerCase())) {
             SoftAssertionCollector.add("Ad beklenen: '" + expected + "' | Gercek: '" + gercek + "'");
         }
@@ -554,7 +557,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Ilk satirda soyad {string} gorunur")
     public void ilkSatirdaSoyadGorunur(String expected) {
-        String gercek = olympusPage.getIlkSatirSoyad();
+        String gercek = bekleyerekOku(() -> olympusPage.getIlkSatirSoyad(), expected, 15);
         if (!gercek.toLowerCase().contains(expected.toLowerCase())) {
             SoftAssertionCollector.add("Soyad beklenen: '" + expected + "' | Gercek: '" + gercek + "'");
         }
@@ -562,7 +565,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Ilk satirda kulup {string} gorunur")
     public void ilkSatirdaKulupGorunur(String beklenenKulup) {
-        String actualKulup = olympusPage.getIlkSatirKulup();
+        String actualKulup = bekleyerekOku(() -> olympusPage.getIlkSatirKulup(), beklenenKulup, 15);
         System.out.println("DEBUG Kulup actual = " + actualKulup);
         if (!beklenenKulup.trim().equals(actualKulup.trim())) {
             SoftAssertionCollector.add("Kulup beklenen: '" + beklenenKulup + "' | Gercek: '" + actualKulup + "'");
@@ -571,7 +574,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Ilk satirda satis temsilcisi {string} gorunur")
     public void ilkSatirdaSatisTemsilcisiGorunur(String beklenenTemsilci) {
-        String actualTemsilci = olympusPage.getIlkSatirSatisTemsilcisi();
+        String actualTemsilci = bekleyerekOku(() -> olympusPage.getIlkSatirSatisTemsilcisi(), beklenenTemsilci, 15);
         System.out.println("DEBUG Satis Temsilcisi actual = " + actualTemsilci);
         if (!beklenenTemsilci.trim().equals(actualTemsilci.trim())) {
             SoftAssertionCollector.add("Satis Temsilcisi beklenen: '" + beklenenTemsilci + "' | Gercek: '" + actualTemsilci + "'");
@@ -580,17 +583,33 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @And("Ilk satirda tags {string} gorunur")
     public void ilkSatirdaTagsGorunur(String beklenenTags) {
-        String actual = olympusPage.getIlkSatirTags();
-        actual = actual.replace("\n", " ").replace("\r", " ").replaceAll("\\s+", " ").trim();
+        String actual = bekleyerekOku(() -> {
+            String t = olympusPage.getIlkSatirTags();
+            return t.replace("\n", " ").replace("\r", " ").replaceAll("\\s+", " ").trim();
+        }, beklenenTags, 15);
         System.out.println("TAGS_ACTUAL|" + randomGsmNo + "|" + actual);
         if (!beklenenTags.trim().equalsIgnoreCase(actual)) {
             SoftAssertionCollector.add("Tags beklenen: '" + beklenenTags + "' | Gercek: '" + actual + "'");
         }
     }
+
     @And("iki saniye bekler")
-    public void ikisaniyebekler()
-    {
-        wait(1);
+    public void ikisaniyebekler() {
+        wait(2);
+    }
+
+    private String bekleyerekOku(Supplier<String> getter, String beklenen, int saniye) {
+        long bitis = System.currentTimeMillis() + (saniye * 1000L);
+        String deger = "";
+        while (System.currentTimeMillis() < bitis) {
+            try {
+                deger = getter.get().trim();
+                if (deger.equalsIgnoreCase(beklenen.trim())) return deger;
+                if (deger.toLowerCase().contains(beklenen.toLowerCase())) return deger;
+            } catch (Exception ignored) {}
+            wait(1);
+        }
+        return deger;
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -621,8 +640,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @Then("kulup ikon ac")
     public void kulupikonac() {
         click(driver.findElement(By.xpath("//button[@class='dropdown-toggle btn btn-primary btn-sm']")));
-        wait(2);
-        click(driver.findElement(By.id("lead-table6")));
+        click(waitForVisibility(By.id("lead-table6")));
     }
 
     @And("Portal Kulup ikinci kez değiştirilir")

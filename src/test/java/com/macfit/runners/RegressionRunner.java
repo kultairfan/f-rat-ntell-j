@@ -19,7 +19,7 @@ import io.cucumber.junit.CucumberOptions;
 				"html:target/cucumber-reports/LeadPortalFlow/report.html",
 				"json:target/cucumber-reports/LeadPortalFlow/report.json"
 		},
-		tags = "@1a3",
+		tags = "@4a",
 		dryRun = false
 
 )

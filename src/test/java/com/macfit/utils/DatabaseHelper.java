@@ -1,5 +1,8 @@
 package com.macfit.utils;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.sql.*;
 
 public class DatabaseHelper {
@@ -8,8 +11,21 @@ public class DatabaseHelper {
     private static final String USERNAME = "devApp";
     private static final String PASSWORD = "tV753knM3Ppr";
 
+    private static final HikariDataSource dataSource;
+
+    static {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(URL);
+        config.setUsername(USERNAME);
+        config.setPassword(PASSWORD);
+        config.setMaximumPoolSize(5);
+        config.setConnectionTimeout(10_000);
+        config.setIdleTimeout(60_000);
+        dataSource = new HikariDataSource(config);
+    }
+
     public Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        return dataSource.getConnection();
     }
 
     public String smsCodeGetir(String telefon) {

@@ -36,6 +36,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -44,7 +45,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup            |
-      | Ela | kulta | 5981110501 | testlead4a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Automation    | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
+      | Ela | Kulta | 5981110501 | testlead4a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Automation    | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a2 - sms onayLI mevcut | atamasiz | gorev var/yok
@@ -83,14 +84,15 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup            |
-      | Ela | kulta | 5998626473 | testlead4a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | kulta         | Flatofis Haliç | System                  | steps: Success | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup            |
+      | Ela | Kulta | 5998626473 | testlead4a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | Flatofis Haliç | System                  | steps: Success | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a3 - sms onaysiz mevcut | atali | gorev yok
@@ -107,12 +109,15 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Portala telefon numarasi girilir "<gsmNo>"
     And Portal sehir "<sehir>" secilir
     And Portal kulup "<portalKulup>" secilir
+    And Portal devam butonuna basilir
     And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Portal Kulup ikinci kez değiştirilir
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -120,8 +125,8 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110503 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Katalon    | Automation    | Flatofis Haliç | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
+      | Ela | Kulta | 5981110503 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Katalon    | Automation    | Altunizade    | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -152,6 +157,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -161,7 +167,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -196,6 +202,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -205,7 +212,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110505 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | kulta         | 42 Maslak     | test.st5                |              | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110505 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                |              | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a6 - sms onaysiz mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -224,18 +231,18 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
-    And JoinUs devam butonuna basilir
-    And JoinUs ilk devam butonuna basilir
     And Portal sehir "<sehir>" secilir
-    And JoinUs kulup "<portalKulup>" secilir
-    And JoinUs paket secilir
-    And JoinUs ulke "<ulke>" secilir
-    And JoinUs formu doldurulur ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>" personelno "<personelNo>"
-    And JoinUs onay butonuna basilir
+    And Portal kulup "<portalKulup>" secilir
+    And Portal devam butonuna basilir
+    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Portal Kulup ikinci kez değiştirilir
+    And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
+
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -247,7 +254,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu         |
-      | Ela | kulta | 5981110506 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | test.st5                | Ücretsiz Ölçüm | Randevu Planla | Randevu Ayarlandı |
+      | Ela | Kulta | 5981110506 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | test.st5                | Ücretsiz Ölçüm | Randevu Planla | Randevu Ayarlandı |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a7 - sms onayLI mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -278,6 +285,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -287,8 +295,8 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags      | gorevTipi      | nedenKodu         |
-      | Ela | kulta | 5981110509 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | Flatofis Haliç | System                  | Steps: PhoneNumber | Randevu Planla | Randevu Ayarlandı |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         |
+      | Ela | Kulta | 5981110509 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | Flatofis Haliç | System                  | Steps: PhoneNumber | Randevu Planla | Randevu Ayarlandı |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -319,6 +327,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -328,7 +337,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110508 | testlead4a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110508 | testlead4a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -365,6 +374,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye dashboarda gidilir
     When ortak random gsm no ile telefon aramasi yapilir
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -373,7 +383,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu         |
-      | Ela | kulta | 5981110527 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | kulta         | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Randevu Ayarlandı |
+      | Ela | Kulta | 5981110527 | testlead4a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Automation    | Fişekhane     | System                  |              | Satış Görüşmesi | Randevu Ayarlandı |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a10 - sms onayLI mevcut | atali | gorev yok
@@ -405,6 +415,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -413,4 +424,4 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags |
-      | Ela | kulta | 5981110510 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Ela        | kulta         | 42 Maslak     | test.st5                |              |
+      | Ela | Kulta | 5981110510 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                |              |

@@ -93,10 +93,9 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void uyeAramaIle(String gsmNo) {
-        waitForVisibility(uyeAramaInput);
-
-        driver.findElement(uyeAramaInput).clear();
-        driver.findElement(uyeAramaInput).sendKeys(gsmNo);
+        WebElement input = waitForVisibility(uyeAramaInput);
+        input.clear();
+        input.sendKeys(gsmNo);
         jsClick(driver.findElement(uyeAramaBtn));
 
         By firstRow = By.xpath("//table[contains(@class,'lead-table')]//tbody/tr[1]");
@@ -108,18 +107,18 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void uzerineAl() {
-        waitForClickability(driver.findElement(ucNoktaBtn));
-        driver.findElement(ucNoktaBtn).click();
+        WebElement menuBtn = waitForVisibility(ucNoktaBtn);
+        menuBtn.click();
         java.util.List<WebElement> uzerineAlList = driver.findElements(uzerineAlIkon);
         if (uzerineAlList.isEmpty()) {
             // Lead zaten bu kullanıcıya atanmış, üzerine al seçeneği yok — kapat ve devam et
             driver.findElement(ucNoktaBtn).click();
             return;
         }
-        waitForClickability(uzerineAlList.get(0));
-        uzerineAlList.get(0).click();
-        waitForClickability(driver.findElement(evetButon));
-        driver.findElement(evetButon).click();
+        WebElement uzerineAl = waitForClickability(uzerineAlList.get(0));
+        uzerineAl.click();
+        WebElement evet = waitForVisibility(evetButon);
+        evet.click();
         getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
     }
 
@@ -128,44 +127,50 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public void gorevMenuAc(String gorevTipi) {
-        // 3 nokta stale olabiliyor; locator bazli tekrar bulup tikla
-        for (int i = 0; i < 3; i++) {
-            try {
-                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(8))
-                        .until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated(ucNoktaBtn));
+        By menuItemLoc = gorevMenuItemLoc(gorevTipi);
 
-                WebElement menuBtn = driver.findElement(ucNoktaBtn);
-                getJSObject().executeScript("arguments[0].click();", menuBtn);
-                break;
-            } catch (org.openqa.selenium.StaleElementReferenceException e) {
-                if (i == 2) throw e;
-                try { Thread.sleep(300); } catch (InterruptedException ignored) {}
+        // 3-nokta butonuna tıkla → menü iteminin görünmesini bekle → açılmadıysa tekrar tıkla (3 deneme)
+        for (int attempt = 0; attempt < 3; attempt++) {
+            try {
+                WebElement btn = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
+                        .until(ExpectedConditions.elementToBeClickable(ucNoktaBtn));
+                scrollToElement(btn);
+                btn.click();
+            } catch (Exception e) {
+                try {
+                    WebElement btn = driver.findElement(ucNoktaBtn);
+                    scrollToElement(btn);
+                    getJSObject().executeScript("arguments[0].click();", btn);
+                } catch (Exception ignored) {}
+            }
+
+            // Dropdown'ın açılıp açılmadığını 5s içinde kontrol et
+            try {
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                        .until(ExpectedConditions.visibilityOfElementLocated(menuItemLoc));
+                break; // Menü açıldı — döngüden çık
+            } catch (Exception ignored) {
+                if (attempt == 2) waitForVisibility(menuItemLoc); // Son deneme — timeout fırlatır
             }
         }
 
+        jsClick(waitForVisibility(menuItemLoc));
+
         if (gorevTipi.equals("Telefon Aramasi Planla")) {
-            By aramaGoreviLoc = By.xpath("//*[normalize-space()='Arama Görevi Planla']");
-            waitForVisibility(aramaGoreviLoc);
-            jsClick(driver.findElement(aramaGoreviLoc));
-
             By telefonLoc = By.xpath("//*[contains(normalize-space(),'Telefon Araması')]");
-            waitForVisibility(telefonLoc);
-            jsClick(driver.findElement(telefonLoc));
+            jsClick(waitForVisibility(telefonLoc));
+        }
+    }
 
+    private By gorevMenuItemLoc(String gorevTipi) {
+        if (gorevTipi.equals("Telefon Aramasi Planla")) {
+            return By.xpath("//*[normalize-space()='Arama Görevi Planla']");
         } else if (gorevTipi.trim().equals("Satis Gorusmesi") || gorevTipi.trim().equals("Satış Görüşmesi")) {
-            By gorevLoc = By.xpath("//*[normalize-space()='Satış Görüşmesi']");
-            waitForVisibility(gorevLoc);
-            jsClick(driver.findElement(gorevLoc));
-
+            return By.xpath("//*[normalize-space()='Satış Görüşmesi']");
         } else if (gorevTipi.trim().equals("Tur Olustur") || gorevTipi.trim().equals("Tur Oluştur")) {
-            By gorevLoc = By.xpath("//*[contains(normalize-space(),'Tur Olu')]");
-            waitForVisibility(gorevLoc);
-            jsClick(driver.findElement(gorevLoc));
-
+            return By.xpath("//*[contains(normalize-space(),'Tur Olu')]");
         } else {
-            By gorevLoc = By.xpath("//*[normalize-space()='" + gorevTipi + "']");
-            waitForVisibility(gorevLoc);
-            jsClick(driver.findElement(gorevLoc));
+            return By.xpath("//*[normalize-space()='" + gorevTipi + "']");
         }
     }
 
@@ -228,7 +233,7 @@ public class OlympusPage extends CommonMethods {
             }
         }
 
-        return td.getText().trim();
+        return driver.findElement(tdLoc).getText().trim();
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -245,7 +250,7 @@ public class OlympusPage extends CommonMethods {
 
         // Loader bitene kadar bekle (dev ortamında yavaş olabilir — 60s)
         try {
-            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(com.macfit.utils.Constants.LOADER_WAIT_TIME))
                 .until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
         } catch (Exception ignored) {}
 
@@ -271,7 +276,7 @@ public class OlympusPage extends CommonMethods {
             jsClick(driver.findElement(kulupLabel));
             System.out.println("Kulüp kolonu açıldı.");
             try {
-                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(60))
+                new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(com.macfit.utils.Constants.LOADER_WAIT_TIME))
                     .until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
             } catch (Exception ignored) {}
         } else {

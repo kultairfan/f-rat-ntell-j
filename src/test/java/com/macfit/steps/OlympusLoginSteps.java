@@ -23,30 +23,23 @@ public class OlympusLoginSteps extends CommonMethods{
 	}
 	@Then("click Uyelik islemleri")
 	public void click_uyelik_islemleri() {
-		wait(4);
-		click(driver.findElement(By.id("topnav-hamburger-icon")));
+		click(waitForVisibility(By.id("topnav-hamburger-icon")));
 		click(driver.findElement(By.xpath("//span[text()=' Üyelik İşlemleri']")));
-
-	    
 	}
 	@Then("click uyelik islemleri sub")
 	public void click_uyelik_islemleri_sub() {
 		click(driver.findElement(By.xpath("//div[@class='collapse menu-dropdown show']/ul/li/a[1]")));
-		wait(1);
-	   
 	}
 	@Then("sendTExt yo username then click search")
 	public void send_t_ext_yo_username_then_click_search() {
 	     sendText(driver.findElement(By.xpath("//input[@formcontrolname='memberId']")), ConfigsReader.getProperty("uyeNo"));
 	     click(driver.findElement(By.xpath("//div[@class='d-flex justify-content-center']")));
-	     wait(2);
 	}
 	@Then("move forward wait {int} scnds")
 	public void move_forward_wait_scnds(Integer int1) {
-		scrollToElement(driver.findElement(By.cssSelector("button.green-button")));
-		
-	   jsClick(driver.findElement(By.cssSelector("button.green-button")));
-	   wait(2);
+		WebElement btn = driver.findElement(By.cssSelector("button.green-button"));
+		scrollToElement(btn);
+		jsClick(btn);
 	}
 	@Then("click paketimi baslat  click yıllık  click pesın click gold move forward")
 	public void click_paketimi_baslat_click_yıllık_click_pesın_click_gold_move_forward() {

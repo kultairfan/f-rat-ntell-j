@@ -69,12 +69,12 @@ public class BaseClass {
 		}
 
 		public void waitComs(By locator) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT_TIME));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		}
 
 		public void waitLoader() {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.LOADER_WAIT_TIME));
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
 		}
 

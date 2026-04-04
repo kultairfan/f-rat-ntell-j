@@ -26,6 +26,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -34,7 +35,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu           |
-      | Ela | kulta | 5981110511 | testlead1b1@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: Success | Randevu Planla | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110511 | testlead1b1@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: Success | Randevu Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b2 - sms onayLI mevcut | atamasiz | gorev var/yok
@@ -60,6 +61,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -67,8 +69,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110512 | testlead1b2@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
+      | Ela | Kulta | 5981110512 | testlead1b2@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Tur Olustur | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b3 - sms onaysiz mevcut | atali | gorev yok
@@ -95,6 +97,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -102,8 +105,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110513 | testlead1b3@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Addon       | Satış Görüşmesi | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           |
+      | Ela | Kulta | 5981110513 | testlead1b3@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Addon | Satış Görüşmesi | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -127,12 +130,14 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Portal kulup "<portalKulup>" secilir
     And Portal devam butonuna basilir
     And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Portal Kulup ikinci kez değiştirilir
     And Portal formu gonderilir
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -140,8 +145,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110514 | testlead1b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: Success | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi              | nedenKodu           |
+      | Ela | Kulta | 5981110514 | testlead1b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | steps: Success | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -163,13 +168,16 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Portala telefon numarasi girilir "<gsmNo>"
     And Portal sehir "<sehir>" secilir
     And Portal kulup "<portalKulup>" secilir
+    Then Portal devam butonuna basilir
     And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    Then Portal Kulup ikinci kez değiştirilir
     And Portal formu gonderilir
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -177,8 +185,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi              | nedenKodu           |
-      | Ela | kulta | 5981110515 | testlead1b5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
+      | Ela | Kulta | 5981110515 | testlead1b5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | System                  | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b6 - sms onaysiz mevcut | atali | randevu/tur gorevi var
@@ -210,6 +218,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -218,7 +227,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110516 | testlead1b6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110516 | testlead1b6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b7 - sms onayLI mevcut | atali | randevu/tur gorevi var - KULUP DEGISMEZ
@@ -241,13 +250,16 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Portala telefon numarasi girilir "<gsmNo>"
     And Portal sehir "<sehir>" secilir
     And Portal kulup "<portalKulup>" secilir
+    Then Portal devam butonuna basilir
     And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    Then Portal Kulup ikinci kez değiştirilir
     And Portal formu gonderilir
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -255,8 +267,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu           |
-      | Ela | kulta | 5981110517 | testlead1b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Fişekhane     | olympus.su              | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           |
+      | Ela | Kulta | 5981110517 | testlead1b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | 42 Maslak     | olympus.su              | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -283,6 +295,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -295,7 +308,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110518 | testlead1b8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110518 | testlead1b8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -327,6 +340,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -335,7 +349,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           |
-      | Ela | kulta | 5981110519 | testlead1b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Success | Satış Görüşmesi | Alotech Ulasilamadi |
+      | Ela | Kulta | 5981110519 | testlead1b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Success | Satış Görüşmesi | Alotech Ulasilamadi |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b10 - sms onayLI mevcut | atali | gorev yok
@@ -361,6 +375,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
+    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -368,5 +383,5 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda tags "<expectedTags>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   |
-      | Ela | kulta | 5981110520 | testlead1b10@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: PhoneNumber |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       |
+      | Ela | Kulta | 5981110520 | testlead1b10@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: PhoneNumber |

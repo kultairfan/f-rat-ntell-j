@@ -57,8 +57,7 @@ public class DijitalUyelikPage extends CommonMethods {
         input.sendKeys(sehir);
 
         By option = By.xpath("//div[@role='option' and contains(text(),'" + sehir + "')]");
-        waitForClickability(driver.findElement(option));
-        driver.findElement(option).click();
+        waitForVisibility(option).click();
     }
 
     public void kulupSec(String kulup) {
@@ -252,8 +251,8 @@ public class DijitalUyelikPage extends CommonMethods {
                     .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ols-loader")));
         } catch (Exception ignored) {}
 
-        kulupSec("MACFit 42 Maslak");
-
+        //kulupSec("MACFit 42 Maslak");
+            kulupSec("MACFit Altunizade");
         try {
             new WebDriverWait(driver, Duration.ofSeconds(10))
                     .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ols-loader")));
