@@ -34,10 +34,11 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup       |
-      | Ela | Kulta | 5981110521 | testlead3a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup       | expectedKaynak                      |
+      | Ela | Kulta | 5981110521 | testlead3a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a2 - sms onayLI mevcut | atamasiz | gorev var/yok
@@ -74,11 +75,12 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup       |
-      | Ela | Kulta | 5981110522 | testlead3a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Clubs | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup       | expectedKaynak |
+      | Ela | Kulta | 5981110522 | testlead3a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Clubs | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak | Website        |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a3 - sms onaysiz mevcut | atali | gorev yok
@@ -107,10 +109,11 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
-      | Ela | Kulta | 5981110523 | testlead3a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak  |
+      | Ela | Kulta | 5981110523 | testlead3a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi   |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -145,11 +148,12 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | Kulta | 5981110524 | testlead3a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak                      |
+      | Ela | Kulta | 5981110524 | testlead3a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -183,10 +187,11 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | Kulta | 5981110525 | testlead3a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak                      |
+      | Ela | Kulta | 5981110525 | testlead3a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a6 - sms onaysiz mevcut | atali | randevu/tur gorevi var
@@ -220,12 +225,13 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
   #görevleri kapat ıcın TODO
     # işlemtarihçesi için TODO
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         |
-      | Ela | Kulta | 5981110526 | testlead3a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | steps: Information | Randevu Planla | Randevu Ayarlandı |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         | expectedKaynak |
+      | Ela | Kulta | 5981110526 | testlead3a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | steps: Information | Randevu Planla | Randevu Ayarlandı | Vücut Analizi  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a7 - sms onayLI mevcut | atali | randevu/tur gorevi var
@@ -268,10 +274,11 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu         |
-      | Ela | Kulta | 5981110527 | testlead3a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Randevu Ayarlandı |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu         | expectedKaynak  |
+      | Ela | Kulta | 5981110527 | testlead3a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Randevu Ayarlandı | AVM Etkinliği   |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -305,12 +312,13 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           |
-      | Ela | Kulta | 5981110528 | testlead3a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110528 | testlead3a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Vücut Analizi  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -353,10 +361,11 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedAd | expectedSoyad |
-      | Ela | Kulta | 5981110529 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Alotech Ulasilamadi | Katalon    | Brandium      |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedAd | expectedSoyad | expectedKaynak  |
+      | Ela | Kulta | 5981110529 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Alotech Ulasilamadi | Katalon    | Brandium      | AVM Etkinliği   |
 
 
   # ─────────────────────────────────────────────────────────────────
@@ -391,7 +400,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags |
-      | Ela | Kulta | 5981110530 | testlead3a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta             | 42 Maslak     | test.st5                | Steps: Clubs |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | expectedKaynak |
+      | Ela | Kulta | 5981110530 | testlead3a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta             | 42 Maslak     | test.st5                | Steps: Clubs | Website        |

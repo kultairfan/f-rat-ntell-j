@@ -182,7 +182,7 @@ public class OlympusPage extends CommonMethods {
     // ══════════════════════════════════════════════════════════════════
 
     public String getIlkSatirKaynak() {
-        return getSutunText(11, false);
+        return getSutunText(12, false);
     }
 
     public String getIlkSatirAd() {

@@ -81,6 +81,14 @@ public class AvmDisiSteps extends CommonMethods {
 
     @And("avm disi formunda Devam Et butonuna basilir")
     public void devam_et() {
+        // Devam Et öncesi DB'deki mevcut kodu kaydet — yeni OTP gelene kadar beklenmesi için
+        String gsm = LeadPortalFlowSteps.getOrtakRandomGsmNo();
+        if (gsm != null) {
+            String mevcutKod = olympusPage.getSmsKodu("90" + gsm);
+            if (mevcutKod != null) {
+                LeadPortalFlowSteps.lastUsedSmsCode = mevcutKod;
+            }
+        }
         waitForClickability(page.devamEt);
         jsClick(page.devamEt);
     }
@@ -88,15 +96,19 @@ public class AvmDisiSteps extends CommonMethods {
     @And("SMS kodu DBden cekilip OTP alanina girilir")
     public void smsKoduDbdenCekilipOtpAlaninaGirilir() {
         String ortakGsmNo = LeadPortalFlowSteps.getOrtakRandomGsmNo();
+        String eskiKod = LeadPortalFlowSteps.lastUsedSmsCode;
         String kod = null;
 
-        for (int i = 0; i < 15 && kod == null; i++) {
+        for (int i = 0; i < 20; i++) {
             kod = olympusPage.getSmsKodu("90" + ortakGsmNo);
-            if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
+            if (kod != null && !kod.equals(eskiKod)) break;
+            kod = null;
+            try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
 
-        Assert.assertNotNull("SMS kodu alinamadi! GSM: " + ortakGsmNo, kod);
-        System.out.println("DB'den gelen OTP: " + kod);
+        Assert.assertNotNull("Yeni SMS kodu alinamadi! GSM: " + ortakGsmNo + " Eski kod: " + eskiKod, kod);
+        System.out.println("DB'den gelen yeni OTP: " + kod);
+        LeadPortalFlowSteps.lastUsedSmsCode = kod;
         page.otpKodunuGir(kod);
     }
 

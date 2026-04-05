@@ -26,10 +26,12 @@ public class LeadPortalFlowSteps extends CommonMethods {
     private GorevAtamaPage gorevAtamaPage;
 
     static String randomGsmNo;
+    static String lastUsedSmsCode;
     private String aktifGorevTipi;
 
     public static void resetGsmNo() {
         randomGsmNo = null;
+        lastUsedSmsCode = null;
     }
 
     private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
@@ -407,6 +409,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
             if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
         Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
+        lastUsedSmsCode = kod;
         List<WebElement> inputs = driver.findElements(
                 By.cssSelector("input[id^='otp_0_']"));
         if (inputs.isEmpty()) inputs = driver.findElements(otpSelector);
@@ -541,10 +544,11 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @Then("Ilk satirda kaynak {string} gorunur")
     public void ilkSatirdaKaynakGorunur(String expected) {
-        String gercek = olympusPage.getIlkSatirKaynak();
-        Assert.assertTrue(
-                "Kaynak beklenen: '" + expected + "' | Gercek: '" + gercek + "'",
-                gercek.contains(expected));
+        String gercek = bekleyerekOku(() -> olympusPage.getIlkSatirKaynak(), expected, 15);
+        System.out.println("DEBUG Kaynak actual = " + gercek);
+        if (!gercek.contains(expected)) {
+            SoftAssertionCollector.add("Kaynak beklenen: '" + expected + "' | Gercek: '" + gercek + "'");
+        }
     }
 
     @And("Ilk satirda ad {string} gorunur")

@@ -39,10 +39,11 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup            |
-      | Ela | Kulta | 5981110501 | testlead1a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup            | expectedKaynak                       |
+      | Ela | Kulta | 5981110501 | testlead1a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç | Web Form - Günlük Üyelik Kampanyası  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a2 - sms onayLI mevcut | atamasiz | gorev var/yok
@@ -88,11 +89,12 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           |
-      | Ela | Kulta | 5998626473 | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  |              | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5998626473 | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  |              | Tur Olustur | Alotech Ulasilamadi | Website        |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a3 - sms onaysiz mevcut | atali | gorev yok
@@ -124,10 +126,11 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           |
-      | Ela | Kulta | 5981110503 | testlead1a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizada    | System                  | steps: Information | Satış Görüşmesi | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak  |
+      | Ela | Kulta | 5981110503 | testlead1a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizada    | System                  | steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi   |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -163,11 +166,12 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | Kulta | 5981110504 | testlead1a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110504 | testlead1a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi | Website        |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -204,11 +208,12 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           |
-      | Ela | Kulta | 5981110505 | testlead1a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Flatofis Haliç | System                  | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak                      |
+      | Ela | Kulta | 5981110505 | testlead1a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Flatofis Haliç | System                  | Steps: PhoneNumber | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a6 - sms onaysiz mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -250,13 +255,14 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
   #görevleri kapat ıcın TODO
     # işlemtarihçesi için TODO
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           |
-      | Ela | Kulta | 5981110506 | testlead1a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Satış Görüşmesi | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110506 | testlead1a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a7 - sms onayLI mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -292,12 +298,13 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         |
-      | Ela | Kulta | 5981110507 | testlead1a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Flatofis Haliç | System                  | Steps: PhoneNumber | Randevu Planla | Randevu Ayarlandı |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         | expectedKaynak                      |
+      | Ela | Kulta | 5981110507 | testlead1a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Flatofis Haliç | System                  | Steps: PhoneNumber | Randevu Planla | Randevu Ayarlandı | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -333,11 +340,12 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           |
-      | Ela | Kulta | 5981110508 | testlead1a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110508 | testlead1a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Vücut Analizi  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -379,12 +387,13 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | formKulup
-      | Ela | Kulta | 5981110509 | testlead1a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Flatofis Haliç | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | 42 Maslak
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup  | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | formKulup | expectedKaynak |
+      | Ela | Kulta | 5981110509 | testlead1a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Flatofis Haliç | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | 42 Maslak | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a10 - sms onayLI mevcut | atali | gorev yok
@@ -418,7 +427,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kulup "<expectedKulup>" gorunur
     And Ilk satirda satis temsilcisi "<expectedSatisTemsilcisi>" gorunur
     And Ilk satirda tags "<expectedTags>" gorunur
+    And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags |
-      | Ela | Kulta | 5981110510 | testlead1a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Clubs |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | expectedKaynak |
+      | Ela | Kulta | 5981110510 | testlead1a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Steps: Clubs | Website        |
