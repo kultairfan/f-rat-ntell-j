@@ -94,7 +94,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5998626473 | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  |              | Tur Olustur | Alotech Ulasilamadi | Website        |
+      | Ela | Kulta | 5998626473 | testlead1a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Steps: Clubs | Tur Olustur | Alotech Ulasilamadi | Website        |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a3 - sms onaysiz mevcut | atali | gorev yok

@@ -108,6 +108,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
             if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
         Assert.assertNotNull("SMS kodu alinamadi!", kod);
+        lastUsedSmsCode = kod;
         adayUyePage.otpDogrula(kod);
     }
 
@@ -403,10 +404,15 @@ public class LeadPortalFlowSteps extends CommonMethods {
             System.out.println("Portal OTP input bulunamadi, OTP adimi atlaniyor.");
             return;
         }
+        String eskiKod = lastUsedSmsCode;
         String kod = null;
-        for (int i = 0; i < 10 && kod == null; i++) {
-            kod = olympusPage.getSmsKodu("90" + randomGsmNo);
-            if (kod == null) try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
+        for (int i = 0; i < 20; i++) {
+            String candidate = olympusPage.getSmsKodu("90" + randomGsmNo);
+            if (candidate != null && !candidate.equals(eskiKod)) {
+                kod = candidate;
+                break;
+            }
+            try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
         }
         Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
         lastUsedSmsCode = kod;
@@ -477,8 +483,18 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @And("JoinUs SMS kodu DBden cekilip girilir {string}")
     public void joinUsSmsKoduDbdenCekilipGirilir(String gsmNo) {
         waitForVisibility(joinUsPage.getOtpLocator());
-        String kod = olympusPage.getSmsKodu("90" + randomGsmNo);
+        String eskiKod = lastUsedSmsCode;
+        String kod = null;
+        for (int i = 0; i < 20; i++) {
+            String candidate = olympusPage.getSmsKodu("90" + randomGsmNo);
+            if (candidate != null && !candidate.equals(eskiKod)) {
+                kod = candidate;
+                break;
+            }
+            try { Thread.sleep(Math.min(500L * (i + 1), 3000L)); } catch (InterruptedException ignored) {}
+        }
         Assert.assertNotNull("JoinUs SMS kodu alinamadi!", kod);
+        lastUsedSmsCode = kod;
         driver.findElement(joinUsPage.getOtpLocator()).sendKeys(kod);
     }
 

@@ -216,8 +216,8 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi              | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110505 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                |              | Telefon Aramasi Planla | Alotech Ulasilamadi | AVM Etkinliği  |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110505 | testlead4a5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Kulübe gelen | Telefon Aramasi Planla | Alotech Ulasilamadi | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a6 - sms onaysiz mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -433,5 +433,5 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | expectedKaynak |
-      | Ela | Kulta | 5981110510 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                |              | AVM Etkinliği  |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags        | expectedKaynak |
+      | Ela | Kulta | 5981110510 | testlead4a10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Kulübe gelen | AVM Etkinliği  |

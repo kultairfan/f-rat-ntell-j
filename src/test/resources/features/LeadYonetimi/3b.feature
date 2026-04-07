@@ -266,18 +266,25 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
     And iki saniye bekler
     Then Olympus dashboard navigate edilir
 
-    When "<portalUrl>" portali acilir
-    And Portala telefon numarasi girilir "<gsmNo>"
-    And Portal sehir "<sehir>" secilir
-    And Portal kulup "<portalKulup>" secilir
-    And Portal devam butonuna basilir
-    And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
-    And Portal OTP confirm butonuna basilir
-    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
-    And Portal formu gonderilir
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "42 Maslak" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And SMS kodu DBden cekilip OTP alanina girilir
+    And OTP Dogrula butonuna basilir
+    Then avm disi formunun gonderildigi dogrulanir
 
 
-    Given Olympus sekmesine gecilir
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -288,8 +295,8 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           | expectedKaynak                      |
-      | Ela | Kulta | 5981110537 | testlead3b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Success | Satış Görüşmesi | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110537 | testlead3b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3b8 - mevcut SMS onaysiz | atali | ret/satis/uzerine alma gorevi var
@@ -345,21 +352,27 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
 
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
-    And iki saniye bekler
-    Then Olympus dashboard navigate edilir
-
-    When "<portalUrl>" portali acilir
-    And Portala telefon numarasi girilir "<gsmNo>"
-    And Portal sehir "<sehir>" secilir
-    And Portal kulup "<portalKulup>" secilir
-    And Portal devam butonuna basilir
-    And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
-    And Portal OTP confirm butonuna basilir
-    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
-    And Portal formu gonderilir
 
 
-    Given Olympus sekmesine gecilir
+    When Avm disi etkinlik sayfasina gidilir
+    And sayfa zoom out yapilir
+    And avm disi formuna ad "<portalAd>" girilir
+    And avm disi formuna soyad "<portalSoyad>" girilir
+    And avm disi formuna eposta "<email>" girilir
+    And avm disi formunda cinsiyet secilir
+    And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
+    # And avm disi formunda sehir "<sehir>" secilir
+    And avm disi formunda kulup "42 Maslak" secilir
+    And avm disi formuna ortak random gsm no girilir
+    And avm disi formunda izinler kabul edilir
+    And avm disi formunda Devam Et butonuna basilir
+    And SMS kodu DBden cekilip OTP alanina girilir
+    And OTP Dogrula butonuna basilir
+    Then avm disi formunun gonderildigi dogrulanir
+
+
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -370,8 +383,8 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           | expectedKaynak                      |
-      | Ela | Kulta | 5981110539 | testlead3b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Success | Satış Görüşmesi | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110539 | testlead3b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3b10 - mevcut SMS onayLI | atali | gorev yok
@@ -392,11 +405,11 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
     And Portal sehir "<sehir>" secilir
     And JoinUs kulup "<portalKulup>" secilir
     And JoinUs paket secilir
-    And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
-    And Portal OTP confirm butonuna basilir
     And JoinUs ulke "<ulke>" secilir
     And JoinUs formu doldurulur ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>" personelno "<personelNo>"
     And JoinUs onay butonuna basilir
+    And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
+    And Portal OTP confirm butonuna basilir
 
     Given Olympus sekmesine gecilir
     When Telefon ile arama yapilir "<gsmNo>"
@@ -409,5 +422,5 @@ Feature: 3b - Gelen SMS onayli lead, isim farkli, kulup ayni
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | expectedKaynak |
-      | Ela | Kulta | 5981110540 | testlead3b10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Website        |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | expectedKaynak |
+      | Ela | Kulta | 5981110540 | testlead3b10@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Addon | Website        |
