@@ -118,9 +118,9 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+    Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -129,8 +129,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak  |
-      | Ela | Kulta | 5981110503 | testlead1a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizada    | System                  | steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi   |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110503 | testlead1a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | System                  | steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -158,7 +158,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -200,7 +201,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -247,7 +249,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -262,7 +265,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi       | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110506 | testlead1a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi  |
+      | Ela | Kulta | 5981110506 | testlead1a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Satış Görüşmesi | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a7 - sms onayLI mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -290,7 +293,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -332,7 +336,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -345,7 +350,7 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110508 | testlead1a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Vücut Analizi  |
+      | Ela | Kulta | 5981110508 | testlead1a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -419,7 +424,8 @@ Feature: 1a - Gelen SMS onaysiz lead, isim ayni, kulup farkli
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<portalAd>" gorunur

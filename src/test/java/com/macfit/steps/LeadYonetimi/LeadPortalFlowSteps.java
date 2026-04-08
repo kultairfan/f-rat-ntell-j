@@ -416,6 +416,12 @@ public class LeadPortalFlowSteps extends CommonMethods {
         }
         Assert.assertNotNull("Portal SMS kodu alinamadi!", kod);
         lastUsedSmsCode = kod;
+        // Loader kaybolana kadar bekle
+        try {
+            new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
+                .until(org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated(
+                    By.cssSelector(".ols-loader")));
+        } catch (Exception ignored) {}
         List<WebElement> inputs = driver.findElements(
                 By.cssSelector("input[id^='otp_0_']"));
         if (inputs.isEmpty()) inputs = driver.findElements(otpSelector);

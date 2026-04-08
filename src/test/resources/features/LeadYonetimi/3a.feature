@@ -82,8 +82,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup       | expectedKaynak |
-      | Ela | Kulta | 5981110522 | testlead3a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Clubs | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak | Website        |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup       | expectedKaynak |
+      | Ela | Kulta | 5981110522 | testlead3a2@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Ela        | Kulta         | 42 Maslak     | System                  | Steps: Success | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit 42 Maslak | Ücretsiz Ölçüm               |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a3 - sms onaysiz mevcut | atali | gorev yok
@@ -104,7 +104,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -116,7 +117,7 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110523 | testlead3a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Vücut Analizi  |
+      | Ela | Kulta | 5981110523 | testlead3a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Brandium      | 42 Maslak     | System                  | Steps: Information | Satış Görüşmesi | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -143,7 +144,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     Then Portal OTP dogrulamasi atlanir
 
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -182,7 +184,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -220,7 +223,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -234,7 +238,7 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         | expectedKaynak |
-      | Ela | Kulta | 5981110526 | testlead3a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | steps: Information | Randevu Planla | Randevu Ayarlandı | Vücut Analizi  |
+      | Ela | Kulta | 5981110526 | testlead3a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | steps: Information | Randevu Planla | Randevu Ayarlandı | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a7 - sms onayLI mevcut | atali | randevu/tur gorevi var
@@ -280,8 +284,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags        | gorevTipi       | nedenKodu         | expectedKaynak |
-      | Ela | Kulta | 5981110527 | testlead3a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                | Steps: Kulübe gelen | Satış Görüşmesi | Randevu Ayarlandı | AVM Etkinliği  |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu         | expectedKaynak |
+      | Ela | Kulta | 5981110527 | testlead3a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ela        | Kulta         | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Randevu Ayarlandı | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -307,7 +311,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And JoinUs onay butonuna basilir
 
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -321,7 +326,7 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110528 | testlead3a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Vücut Analizi  |
+      | Ela | Kulta | 5981110528 | testlead3a8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Brandium      | 42 Maslak     | System                  | Ücretsiz Ölçüm | Tur Olustur | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 3a9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -367,8 +372,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags        | gorevTipi       | nedenKodu           | expectedAd | expectedSoyad | expectedKaynak |
-      | Ela | Kulta | 5981110529 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | test.st5                | Steps: Kulübe gelen | Satış Görüşmesi | Alotech Ulasilamadi | Katalon    | Brandium      | AVM Etkinliği  |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedAd | expectedSoyad | expectedKaynak |
+      | Ela | Kulta | 5981110529 | testlead3a9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Brandium    | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | test.st5                |              | Satış Görüşmesi | Alotech Ulasilamadi | Ela        | Kulta         | AVM Etkinliği  |
 
 
   # ─────────────────────────────────────────────────────────────────
@@ -395,7 +400,8 @@ Feature: 3a - Gelen SMS onaysiz lead, isim farkli, kulup ayni
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Given Olympus sekmesine gecilir
+   Given Olympus dashboard kontrole hazirlanir
+    When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur

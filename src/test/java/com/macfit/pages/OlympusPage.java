@@ -79,7 +79,12 @@ public class OlympusPage extends CommonMethods {
     public void adayUyeSayfasinaGit() {
         getWaitObject().until(ExpectedConditions.elementToBeClickable(adayUyeMenuBtn));
         jsClick(driver.findElement(adayUyeMenuBtn));
-        getJSObject().executeScript("document.body.style.zoom='60%'");
+        try {
+            getWaitObject().until(ExpectedConditions.invisibilityOfElementLocated(By.className("ols-loader")));
+        } catch (Exception ignored) {}
+        try {
+            getJSObject().executeScript("document.body.style.zoom='60%'");
+        } catch (Exception ignored) {}
     }
 
     public void adayUyeEkleBtn() {
