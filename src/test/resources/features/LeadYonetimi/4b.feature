@@ -35,7 +35,7 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -61,9 +61,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Vucut formu gonderilir
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
-    And iki saniye bekler
-    And iki saniye bekler
-    And iki saniye bekler
+
+
+
 
     When Avm disi etkinlik sayfasina gidilir
     And sayfa zoom out yapilir
@@ -85,7 +85,7 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -118,10 +118,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal OTP confirm butonuna basilir
 
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -137,7 +136,7 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
   # 4b4 - sms onaysiz mevcut | atali | telefon gorevi var
   # ### YAVUZA SORULACAK ### TODO
   # ─────────────────────────────────────────────────────────────────
-  @withOTP @4b4 #telefon görevi olması ıcın is sms approved 1 olması gerekmektedir. kaldırıldı
+  @withOTP @4b4 @4b #telefon görevi olması ıcın is sms approved 1 olması gerekmektedir. kaldırıldı
   Scenario Outline: 4b4 - Gelen SMS onayLI, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, telefon gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
@@ -160,10 +159,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -172,8 +169,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110514 | testlead4b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ece      | Kaya        | İstanbul | MACFit 42 Maslak | 18.09.2000        | Ece        | Kaya          | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm  |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi              | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110514 | testlead4b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | 18.09.2000        | Katalon    | Automation    | Altunizade    | System                  | Steps: Success | Telefon Aramasi Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm |
 
   # ─────────────────────────────────────────────────────────────────
   # 4b5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -202,10 +199,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -245,10 +241,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -287,10 +282,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -326,10 +320,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -378,10 +371,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And OTP Dogrula butonuna basilir
     Then avm disi formunun gonderildigi dogrulanir
 
-    Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -416,10 +408,9 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur

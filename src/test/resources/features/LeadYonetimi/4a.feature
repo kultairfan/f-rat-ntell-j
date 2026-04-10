@@ -36,7 +36,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -63,9 +63,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Vucut formu gonderilir
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
-    And iki saniye bekler
-    And iki saniye bekler
-    And iki saniye bekler
+
+
+
 
     When Avm disi etkinlik sayfasina gidilir
     And sayfa zoom out yapilir
@@ -85,7 +85,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Given Olympus dashboard kontrole hazirlanir
     When Aday uye dashboarda gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -117,10 +117,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -136,33 +135,31 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
   # 4a4 - sms onaysiz mevcut | atali | telefon gorevi var
   # ─────────────────────────────────────────────────────────────────
   # ####################  BU SENARYO KALDIRILDI. ####################
+  @4a4 @4a
   Scenario Outline: 4a4 - Gelen SMS onaysiz, isim farkli, kulup farkli, mevcut SMS onaysiz, atali, telefon gorevi var
     Given Olympus dashboard acilir ve giris yapilir
     When Aday uye sayfasina gidilir
     And Aday uye ekle formuna bilgiler girilir ad "<ad>" soyad "<soyad>" gsmNo "<gsmNo>" email "<email>" kaynak "<kaynak>" dogumtarihi "<dogumTarihi>"
     And OTP dogrulamasi atlanir
-
     Then Aday uye basariyla olusturulur
+
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
     And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     When "<portalUrl>" portali acilir
     And Portala telefon numarasi girilir "<gsmNo>"
-    And JoinUs devam butonuna basilir
-    And JoinUs ilk devam butonuna basilir
     And Portal sehir "<sehir>" secilir
-    And JoinUs kulup "<portalKulup>" secilir
-    And JoinUs paket secilir
-    And JoinUs ulke "<ulke>" secilir
-    And JoinUs formu doldurulur ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>" personelno "<personelNo>"
-    And JoinUs onay butonuna basilir
+    And Portal kulup "<portalKulup>" secilir
+    And Portal devam butonuna basilir
+    And Portal form bilgileri girilir ad "<portalAd>" soyad "<portalSoyad>" email "<email>" dogumtarihi "<portalDogumTarihi>"
+    And Portal Kulup ikinci kez değiştirilir
+    And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -172,8 +169,8 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | 42 Maslak     | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi | Website        |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | System                  | Steps: Information | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası        |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -205,10 +202,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And avm disi formunda Devam Et butonuna basilir
     And OTP dogrulamasi kapatilir
 
-    Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -247,10 +243,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     Then Portal OTP dogrulamasi atlanir
 
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -292,10 +287,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -336,10 +330,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-   Given Olympus dashboard kontrole hazirlanir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -384,10 +377,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And OTP dogrulamasi kapatilir
 
 
-    Given Olympus dashboard acilir ve giris yapilir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When ortak random gsm no ile telefon aramasi yapilir
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -426,10 +418,9 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
     And OTP dogrulamasi kapatilir
 
 
-    Given Olympus dashboard acilir ve giris yapilir
-    When Aday uye dashboarda gidilir
+    Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-    And iki saniye bekler
+
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur

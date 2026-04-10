@@ -141,6 +141,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @When("{string} portali acilir ve devam edilir")
     public void portaliAcilirvedevamedilir(String portalUrlKey) {
         randomGsmNo       = TestData.generatePhone();
+        System.out.println("SCENARIO_GSM: " + randomGsmNo);
         olympusPage       = new OlympusPage();
         joinUsPage        = new JoinUsPage();
         dijitalUyelikPage = new DijitalUyelikPage();
