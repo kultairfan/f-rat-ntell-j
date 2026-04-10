@@ -31,7 +31,7 @@ Feature: 1a2 - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | vucutUrl            | vucutKulup             |
-      | Ela | kulta | 5981110501 | testlead1a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç  |
+      | Ela | kulta | 5981110501 | testlead1a1@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps : Telefon No | Randevu Planla | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç  |
 
 
   # ─────────────────────────────────────────────────────────────────
@@ -68,4 +68,4 @@ Feature: 1a2 - Gelen SMS onaysiz lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | portalDogumTarihi | portalUrl | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi   | nedenKodu           | vucutUrl            | vucutKulup            |
-      | Ela | kulta | 5911110117 | testlead1a2@hotmail.com | 18.09.2000        | dijital-uyelik-formu   | Ela      | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 5941412    | 42 Maslak     | System                  | Steps: Clubs | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |
+      | Ela | kulta | 5911110117 | testlead1a2@hotmail.com | 18.09.2000        | dijital-uyelik-formu   | Ela      | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 5941412    | 42 Maslak     | System                  | Steps : Kulüp Seçme | Tur Olustur | Alotech Ulasilamadi | vucut-analizi-formu | MACFit Flatofis Haliç |

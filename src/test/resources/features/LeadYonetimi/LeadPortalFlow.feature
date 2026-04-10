@@ -68,4 +68,4 @@ Feature: Lead Portal Akisi - Olympus Aday Uye + Portal 2. Gidis
 
     Examples:
       | ad        | soyad | gsmNo      | email                  | kaynak       | dogumTarihi | portalUrl | portalAd  | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           |
-      | Ela | kulta | 5981110516 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi |
+      | Ela | kulta | 5981110516 | testfirat1@hotmail.com | Kulube gelen | 01.01.1990  | join-us   | Ela | kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Fişekhane     | System                  | Steps: Kişisel Bilgi | Tur Olustur | Alotech Ulasilamadi |

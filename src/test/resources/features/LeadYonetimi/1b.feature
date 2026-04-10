@@ -30,7 +30,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+    When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
@@ -40,8 +41,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu           | expectedKaynak | vucutUrl            | vucutKulup            |
-      | Ela | Kulta | 5981110511 | testlead1b1@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | steps: Success | Randevu Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm | vucut-analizi-formu | MACFit Flatofis Haliç |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags     | gorevTipi      | nedenKodu           | expectedKaynak | vucutUrl            | vucutKulup            |
+      | Ela | Kulta | 5981110511 | testlead1b1@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | Steps : Başarılı | Randevu Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm | vucut-analizi-formu | MACFit Flatofis Haliç |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b2 - sms onayLI mevcut | atamasiz | gorev var/yok
@@ -89,8 +90,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi   | nedenKodu           | expectedKaynak                      |
-      | Ela | Kulta | 5981110512 | testlead1b2@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | Steps: Success | Tur Olustur | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags    | gorevTipi   | nedenKodu           | expectedKaynak                      |
+      | Ela | Kulta | 5981110512 | testlead1b2@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | Steps: Başarılı | Tur Olustur | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b3 - sms onaysiz mevcut | atali | gorev yok
@@ -115,9 +116,9 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+    When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
-
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -167,8 +168,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi              | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110514 | testlead1b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | steps: Success | Telefon Aramasi Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags    | gorevTipi              | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110514 | testlead1b4@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Altunizade    | System                  | steps: Başarılı | Telefon Aramasi Planla | Alotech Ulasilamadi | Ücretsiz Ölçüm |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -208,8 +209,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi              | nedenKodu           | expectedKaynak                      |
-      | Ela | Kulta | 5981110515 | testlead1b5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | System                  | Steps: Success | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags    | gorevTipi              | nedenKodu           | expectedKaynak                      |
+      | Ela | Kulta | 5981110515 | testlead1b5@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | System                  | Steps: Başarılı | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b6 - sms onaysiz mevcut | atali | randevu/tur gorevi var
@@ -252,8 +253,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags   | gorevTipi      | nedenKodu         | expectedKaynak |
-      | Ela | Kulta | 5981110506 | testlead1a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Altunizade    | System                  | Steps: Success | Randevu Planla | Randevu Ayarlandı | Ücretsiz Ölçüm |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedKulup | expectedSatisTemsilcisi | expectedTags     | gorevTipi      | nedenKodu         | expectedKaynak |
+      | Ela | Kulta | 5981110506 | testlead1b6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Altunizade    | System                  | Steps : Başarılı | Randevu Planla | Randevu Ayarlandı | Ücretsiz Ölçüm |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b7 - sms onayLI mevcut | atali | randevu/tur gorevi var - KULUP DEGISMEZ
@@ -295,7 +296,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu           | expectedKaynak                      |
-      | Ela | Kulta | 5981110517 | testlead1b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | olympus.su              | Steps: PhoneNumber | Randevu Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
+      | Ela | Kulta | 5981110517 | testlead1b7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Altunizade    | olympus.su              | Steps : Telefon No | Randevu Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -336,8 +337,8 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Gorev "<nedenKodu>" neden koduyla kaydedilir
 
     Examples:
-      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi   | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110518 | testlead1b8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Information | Tur Olustur | Alotech Ulasilamadi | Ücretsiz Ölçüm |
+      | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags         | gorevTipi   | nedenKodu           | expectedKaynak |
+      | Ela | Kulta | 5981110518 | testlead1b8@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps: Kişisel Bilgi | Tur Olustur | Alotech Ulasilamadi | Ücretsiz Ölçüm |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b9 - sms onayLI mevcut | atali | ret/satis/uzerine alma gorevi var
@@ -364,7 +365,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And avm disi formunda cinsiyet secilir
     And avm disi formuna dogum tarihi "<portalDogumTarihi>" girilir
     # And avm disi formunda sehir "<sehir>" secilir
-    And avm disi formunda kulup "Fişekhane" secilir
+    And avm disi formunda kulup "42 Maslak" secilir
     And avm disi formuna ortak random gsm no girilir
     And avm disi formunda izinler kabul edilir
     And avm disi formunda Devam Et butonuna basilir
@@ -375,7 +376,6 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Then Olympus dashboard navigate edilir
     When Telefon ile arama yapilir "<gsmNo>"
-
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
     And Ilk satirda kulup "<expectedKulup>" gorunur
@@ -385,7 +385,7 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags | gorevTipi       | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110519 | testlead1b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | Fişekhane     | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | AVM Etkinliği  |
+      | Ela | Kulta | 5981110519 | testlead1b9@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  |              | Satış Görüşmesi | Alotech Ulasilamadi | AVM Etkinliği  |
 
   # ─────────────────────────────────────────────────────────────────
   # 1b10 - sms onayLI mevcut | atali | gorev yok
@@ -419,5 +419,5 @@ Feature: 1b - Gelen SMS onayLI lead, isim ayni, kulup farkli
     And Ilk satirda kaynak "<expectedKaynak>" gorunur
 
     Examples:
-      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags   | expectedKaynak |
-      | Ela | Kulta | 5981110520 | testlead1b10@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | steps: Success | Ücretsiz Ölçüm |
+      | ad  | soyad | gsmNo      | email                    | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup      | portalDogumTarihi | expectedKulup | expectedSatisTemsilcisi | expectedTags     | expectedKaynak |
+      | Ela | Kulta | 5981110520 | testlead1b10@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Ela      | Kulta       | İstanbul | MACFit 42 Maslak | 18.09.2000        | 42 Maslak     | System                  | Steps : Başarılı | Ücretsiz Ölçüm |

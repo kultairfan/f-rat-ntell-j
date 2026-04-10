@@ -405,6 +405,7 @@ public class LeadPortalFlowSteps extends CommonMethods {
             System.out.println("Portal OTP input bulunamadi, OTP adimi atlaniyor.");
             return;
         }
+        if (olympusPage == null) olympusPage = new OlympusPage();
         String eskiKod = lastUsedSmsCode;
         String kod = null;
         for (int i = 0; i < 20; i++) {
