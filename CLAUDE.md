@@ -76,7 +76,7 @@ src/test/java/com/macfit/
 | Class | Purpose |
 |---|---|
 | `CommonMethods` | ~60 Selenium utilities: `sendText`, waits, click-with-retry, JS execution, alerts, frames, window switching, `takeScreenshot()`, calendar picker. Extends `PageInitializer` → `BaseClass`. |
-| `DatabaseHelper` | HikariCP → MySQL at 10.10.100.81:3306. `smsCodeGetir(String telefon)` fetches latest OTP from `Messaging.SmsCodes` |
+| `DatabaseHelper` | HikariCP → MySQL at 10.10.100.213:3306 (stage). `smsCodeGetir(String telefon)` fetches latest OTP from `Messaging.SmsCodes` |
 | `SoftAssertionCollector` | ThreadLocal soft assertion accumulator. `add(String)`, `hasErrors()`, `getReport()`, `clear()`. Errors reported at end of `@After` hook |
 | `TestData` | `generatePhone()` — random Turkish GSM number in `59XXXXXXXX` format for test isolation |
 | `ExcelUtility` | Apache POI wrapper. `excelIntoArray(filePath, sheetName)` → `Object[][]` |
@@ -88,7 +88,7 @@ src/test/java/com/macfit/
 `src/test/resources/configs/configuration.properties`:
 ```
 browser=chrome
-url=https://olympusdev-dashboard.marsathletic.com/auth/login
+url=https://olympusstg-dashboard.marsathletic.com/auth/login
 username=test.st5            # default Olympus account
 olympusu.username=olympus.su # alternate account used for 1a/1b scenarios
 uyeNo=5572438

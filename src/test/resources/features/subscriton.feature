@@ -10,7 +10,7 @@ Feature: Avm disi etkinlik
     And avm disi formuna eposta "<email>" girilir
     And avm disi formunda cinsiyet secilir
     And avm disi formuna dogum tarihi "<dogumTarihi>" girilir
-    # And avm disi formunda sehir "<sehir>" secilir
+     And avm disi formunda sehir "<sehir>" secilir
     And avm disi formunda kulup "<kulup>" secilir
     And avm disi formunda izinler kabul edilir
     And avm disi formunda Devam Et butonuna basilir

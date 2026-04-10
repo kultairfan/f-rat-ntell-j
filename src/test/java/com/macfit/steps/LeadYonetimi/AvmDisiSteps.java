@@ -18,7 +18,8 @@ public class AvmDisiSteps extends CommonMethods {
 
     @When("Avm disi etkinlik sayfasina gidilir")
     public void sayfaya_git() {
-        driver.get("https://olympusdev-subscription-ui.marsathletic.com/#/activity?key=30154104-268c-4815-8b96-e4ab69e10cb5");
+        // driver.get("https://olympusdev-subscription-ui.marsathletic.com/#/activity?key=30154104-268c-4815-8b96-e4ab69e10cb5");
+        driver.get("https://olympusstg-subscription-ui.marsathletic.com/#/activity?key=a2834de7-9662-4b58-bec5-9b7f1f5cfece");
     }
 
     @When("sayfa zoom out yapilir")
@@ -66,7 +67,7 @@ public class AvmDisiSteps extends CommonMethods {
 
     @And("avm disi formunda sehir {string} secilir")
     public void sehir_sec(String sehir) {
-        page.dropdownSec(page.sehirDropdown, sehir);
+        page.sehirSec(sehir);
     }
 
     @And("avm disi formunda kulup {string} secilir")

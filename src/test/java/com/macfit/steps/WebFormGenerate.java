@@ -19,7 +19,8 @@ public class WebFormGenerate extends CommonMethods {
 		
 		wait(2);
 		
-		driver.navigate().to("https://olympusdev-dashboard.marsathletic.com/campaign-management/forms/create");
+//		driver.navigate().to("https://olympusdev-dashboard.marsathletic.com/campaign-management/forms/create");
+		driver.navigate().to("https://olympusstg-dashboard.marsathletic.com/campaign-management/forms/create");
 		wait(2);
 		
 		

@@ -7,9 +7,14 @@ import java.sql.*;
 
 public class DatabaseHelper {
 
-    private static final String URL      = "jdbc:mysql://10.10.100.81:3306/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String USERNAME = "devApp";
+//    private static final String URL      = "jdbc:mysql://10.10.100.81:3306/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+//    private static final String USERNAME = "devApp";
+//    private static final String PASSWORD = "tV753knM3Ppr";
+
+    private static final String URL      = "jdbc:mysql://10.10.100.213:3306/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    private static final String USERNAME = "stageApp";
     private static final String PASSWORD = "tV753knM3Ppr";
+
 
     private static final HikariDataSource dataSource;
 

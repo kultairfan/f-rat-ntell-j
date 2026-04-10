@@ -97,6 +97,30 @@ public class AvmDisiPage extends CommonMethods {
             jsClick(element);
         }
     }
+    @FindBy(id = "event-form-city")
+    public WebElement sehirAlan;
+
+    public void sehirSec(String sehirAdi) {
+        jsClick(sehirAlan);
+
+        WebElement searchInput = driver.findElement(
+                By.xpath("//ng-select[@id='event-form-city']//input")
+        );
+        searchInput.clear();
+        searchInput.sendKeys(sehirAdi);
+
+        By option = By.xpath(
+                "//ng-dropdown-panel//div[contains(@class,'ng-option') and contains(normalize-space(),'" + sehirAdi + "')]"
+        );
+        WebElement element = waitForVisibility(option);
+        scrollToElement(element);
+
+        try {
+            element.click();
+        } catch (Exception e) {
+            jsClick(element);
+        }
+    }
 
     public void izinleriKabulEt() {
         if (!elektronikIleti.isSelected()) {

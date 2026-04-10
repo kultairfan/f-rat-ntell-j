@@ -46,7 +46,8 @@ public class OlympusPage extends CommonMethods {
         String currentUrl = driver.getCurrentUrl();
 
         // Speed: zaten dashboard'daysa tekrar login yapmadan devam et
-        if (currentUrl.contains("olympusdev-dashboard") && !currentUrl.contains("/auth/login")) {
+//        if (currentUrl.contains("olympusdev-dashboard") && !currentUrl.contains("/auth/login"))
+        if (currentUrl.contains("olympusstg-dashboard") && !currentUrl.contains("/auth/login")){
             try {
                 new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
                         .until(ExpectedConditions.elementToBeClickable(adayUyeMenuBtn));
