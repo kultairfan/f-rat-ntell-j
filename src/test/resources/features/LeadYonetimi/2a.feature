@@ -99,7 +99,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
@@ -136,7 +137,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     Then Ilk satirda ad "<portalAd>" gorunur
     And Ilk satirda soyad "<portalSoyad>" gorunur
@@ -175,7 +177,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -213,7 +216,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -254,7 +258,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And Portal formu gonderilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -292,7 +297,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And JoinUs onay butonuna basilir
 
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -323,7 +329,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
     And iki saniye bekler
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Avm disi etkinlik sayfasina gidilir
     And sayfa zoom out yapilir
     And avm disi formuna ad "<portalAd>" girilir
@@ -339,7 +346,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And OTP dogrulamasi kapatilir
 
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When ortak random gsm no ile telefon aramasi yapilir
 
     Then Ilk satirda ad "<portalAd>" gorunur
@@ -377,7 +385,8 @@ Feature: 2a - Gelen SMS onaysiz lead, isim ayni, kulup ayni
     And JoinUs onay butonuna basilir
     Then Portal OTP dogrulamasi atlanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<portalAd>" gorunur

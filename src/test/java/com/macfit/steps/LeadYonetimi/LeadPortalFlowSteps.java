@@ -34,7 +34,8 @@ public class LeadPortalFlowSteps extends CommonMethods {
         lastUsedSmsCode = null;
     }
 
-    private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
+  //  private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
+    private static final String PORTAL_BASE = "https://portalstg-client.marsathletic.com";
 
     // ══════════════════════════════════════════════════════════════════
     // LOGIN
@@ -68,7 +69,8 @@ public class LeadPortalFlowSteps extends CommonMethods {
     @Then("Olympus dashboard navigate edilir")
     public void olympusDashboardNavigateedilir()
     {
-        driver.navigate().to("https://olympusdev-dashboard.marsathletic.com/member/lead");
+      //  driver.navigate().to("https://olympusdev-dashboard.marsathletic.com/member/lead");
+        driver.navigate().to("https://olympusstg-dashboard.marsathletic.com/member/lead");
 
     }
 
@@ -557,7 +559,8 @@ public class LeadPortalFlowSteps extends CommonMethods {
     public void gorevNedenKoduylaKaydedilir(String nedenKodu) {
         gorevAtamaPage.gorevModalinuDoldurVeKaydet(aktifGorevTipi, nedenKodu);
         if (aktifGorevTipi != null && aktifGorevTipi.trim().equals("Satış Görüşmesi")) {
-            driver.get("https://olympusdev-dashboard.marsathletic.com/member/lead");
+//            driver.get("https://olympusdev-dashboard.marsathletic.com/member/lead");
+            driver.get("https://olympusstg-dashboard.marsathletic.com/member/lead");
             waitForVisibility(By.id("gsmNo"));
         }
     }
@@ -678,7 +681,9 @@ public class LeadPortalFlowSteps extends CommonMethods {
 
     @When("portali navigate ile acilir")
     public void portaliNavigateIleAcilir() {
-        driver.get("https://portaldev-client.marsathletic.com/tr/dijital-uyelik-formu");
+//        driver.get("https://portaldev-client.marsathletic.com/tr/dijital-uyelik-formu");
+        driver.get("https://portalstg-client.marsathletic.com/tr/dijital-uyelik-formu");
+
     }
 
     @And("Portala yeni telefon numarasi girilir {string}")

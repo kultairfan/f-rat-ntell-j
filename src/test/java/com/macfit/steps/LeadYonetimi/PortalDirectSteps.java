@@ -12,7 +12,8 @@ public class PortalDirectSteps extends CommonMethods {
 
     private DijitalUyelikPage dijitalUyelikPage;
 
-    private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
+//    private static final String PORTAL_BASE = "https://portaldev-client.marsathletic.com";
+    private static final String PORTAL_BASE = "https://portalstg-client.marsathletic.com";
 
     @Given("{string} direct portal acilir")
     public void directPortalAcilir(String portalUrlKey) {

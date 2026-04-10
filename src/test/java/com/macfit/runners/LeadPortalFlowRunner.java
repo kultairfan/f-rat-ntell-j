@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports/LeadPortalFlow/report.html",
                 "json:target/cucumber-reports/LeadPortalFlow/report.json"
         },
-        tags = "@1a2 or @1a4 or @1a5 or @1a6 or @1b1 or @1b3 or @2b10 or @3a2",
+        tags = "@1a4",
         dryRun = false
 )
 public class LeadPortalFlowRunner {

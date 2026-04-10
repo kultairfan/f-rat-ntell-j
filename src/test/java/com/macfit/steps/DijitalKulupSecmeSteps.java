@@ -12,8 +12,8 @@ public class DijitalKulupSecmeSteps extends CommonMethods {
         setUp();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-        driver.navigate().to("https://portaldev-client.marsathletic.com/tr/dijital-uyelik-formu");
-
+//        driver.navigate().to("https://portaldev-client.marsathletic.com/tr/dijital-uyelik-formu");
+        driver.navigate().to("https://portalstg-client.marsathletic.com/tr/dijital-uyelik-formu");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("phone"))).sendKeys("5992554772");
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("city"))).click();

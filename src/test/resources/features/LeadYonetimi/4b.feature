@@ -118,7 +118,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal OTP confirm butonuna basilir
 
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -159,7 +160,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
     Then Ilk satirda ad "<expectedAd>" gorunur
     And Ilk satirda soyad "<expectedSoyad>" gorunur
@@ -199,7 +201,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -241,7 +244,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -282,7 +286,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -320,7 +325,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -353,7 +359,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     When Telefon ile arama yapilir "<gsmNo>"
     And "<gorevTipi>" gorevi atanir
     And iki saniye bekler
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
 
     When Avm disi etkinlik sayfasina gidilir
     And sayfa zoom out yapilir
@@ -371,7 +378,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And OTP Dogrula butonuna basilir
     Then avm disi formunun gonderildigi dogrulanir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
@@ -408,7 +416,8 @@ Feature: 4b - Gelen SMS onayli lead, isim farkli, kulup farkli
     And Portal SMS kodu DBden cekilip girilir "<gsmNo>"
     And Portal OTP confirm butonuna basilir
 
-    Then Olympus dashboard navigate edilir
+    Given Olympus dashboard acilir ve giris yapilir
+ When Aday uye sayfasina gidilir
     When Telefon ile arama yapilir "<gsmNo>"
 
     Then Ilk satirda ad "<expectedAd>" gorunur
