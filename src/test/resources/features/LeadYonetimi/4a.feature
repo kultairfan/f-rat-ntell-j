@@ -130,7 +130,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi       | nedenKodu           | expectedKaynak  |
-      | Ela | Kulta | 5981110503 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Katalon    | Automation    | Altunizade    | System                  | Steps: Kişisel Bilgi | Satış Görüşmesi | Alotech Ulasilamadi | Ücretsiz Ölçüm   |
+      | Ela | Kulta | 5981110503 | testlead4a3@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Katalon    | Automation    | Altunizade    | System                  | Adım: Kişisel Bilgi | Satış Görüşmesi | Alotech Ulasilamadi | Ücretsiz Ölçüm   |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a4 - sms onaysiz mevcut | atali | telefon gorevi var
@@ -172,7 +172,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup      | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi              | nedenKodu           | expectedKaynak |
-      | Ela | Kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | System                  | Steps: Kişisel Bilgi | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası        |
+      | Ela | Kulta | 5981110504 | testlead4a4@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit 42 Maslak | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | System                  | Adım: Kişisel Bilgi | Telefon Aramasi Planla | Alotech Ulasilamadi | Web Form - Günlük Üyelik Kampanyası        |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a5 - sms onayLI mevcut | atali | telefon gorevi var
@@ -261,7 +261,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl           | portalAd | portalSoyad | sehir    | portalKulup           | ulke        | portalDogumTarihi | personelNo | expectedAd | expectedSoyad | expectedKulup | expectedSatisTemsilcisi | expectedTags       | gorevTipi      | nedenKodu         | expectedKaynak |
-      | Ela | Kulta | 5981110506 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | System                  | Steps: Kişisel Bilgi | Randevu Planla | Randevu Ayarlandı | Ücretsiz Ölçüm  |
+      | Ela | Kulta | 5981110506 | testlead4a6@hotmail.com | Kulube gelen | 01.01.1990  | vucut-analizi-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | Afghanistan | 18.09.2000        | 5941412    | Katalon    | Automation    | Altunizade    | System                  | Adım: Kişisel Bilgi | Randevu Planla | Randevu Ayarlandı | Ücretsiz Ölçüm  |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a7 - sms onayLI mevcut | atali | randevu/tur/ Satış Görüşmesi  gorevi var
@@ -305,7 +305,7 @@ Feature: 4a - Gelen SMS onaysiz lead, isim farkli, kulup farkli
 
     Examples:
       | ad  | soyad | gsmNo      | email                   | kaynak       | dogumTarihi | portalUrl            | portalAd | portalSoyad | sehir    | portalKulup           | portalDogumTarihi | expectedAd | expectedSoyad | expectedKulup  | expectedSatisTemsilcisi | expectedTags          | gorevTipi      | nedenKodu         | expectedKaynak                      |
-      | Ela | Kulta | 5981110509 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | Flatofis Haliç | System                  | Steps: Kişisel Bilgi | Randevu Planla | Randevu Ayarlandı | Web Form - Günlük Üyelik Kampanyası |
+      | Ela | Kulta | 5981110509 | testlead4a7@hotmail.com | Kulube gelen | 01.01.1990  | dijital-uyelik-formu | Katalon  | Automation  | İstanbul | MACFit Flatofis Haliç | 18.09.2000        | Ela        | Kulta         | Flatofis Haliç | System                  | Adım: Kişisel Bilgi | Randevu Planla | Randevu Ayarlandı | Web Form - Günlük Üyelik Kampanyası |
 
   # ─────────────────────────────────────────────────────────────────
   # 4a8 - sms onaysiz mevcut | atali | ret/satis/uzerine alma gorevi var

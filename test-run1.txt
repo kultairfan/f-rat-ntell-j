@@ -70,8 +70,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5949078482|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5949078482|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                              # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -124,8 +124,8 @@ DEBUG Kulup actual = Fi�ekhane
   And Ilk satirda kulup "Fişekhane" gorunur                                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5935527483|Steps: Clubs
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5935527483|Adım: Clubs
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -162,8 +162,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5993877705|steps: Information
-  And Ilk satirda tags "steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5993877705|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -205,8 +205,8 @@ DEBUG Kulup actual = Flatofis Hali�
   And Ilk satirda kulup "Flatofis Haliç" gorunur                                                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5956325208|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5956325208|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -272,7 +272,7 @@ Session ID: de3ef77723457724d55daa335952628b
   And Ilk satirda soyad "Kulta" gorunur                                                                                                                               # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSoyadGorunur(java.lang.String)
   And Ilk satirda kulup "Flatofis Haliç" gorunur                                                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
     Embedding 1a7 - Gelen SMS onaysiz, isim ayni, kulup farkli, mevcut SMS onayLI, atali, randevu/tur gorevi var [image/png 74065 bytes]
@@ -362,8 +362,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5932041027|Steps: Clubs
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5932041027|Adım: Clubs
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                             # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -400,8 +400,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5957277010|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5957277010|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -440,8 +440,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5945504773|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5945504773|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -481,8 +481,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5951541380|Steps: Addon
-  And Ilk satirda tags "Steps: Addon" gorunur                                                                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5951541380|Adım: Addon
+  And Ilk satirda tags "Adım: Addon" gorunur                                                                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -524,8 +524,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5913374817|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5913374817|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -568,8 +568,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5946495978|Steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5946495978|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -659,8 +659,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5997642970|steps: PhoneNumber
-  And Ilk satirda tags "steps: PhoneNumber" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5997642970|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -696,8 +696,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5932120629|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5932120629|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -762,7 +762,7 @@ Session ID: be646eb2ba132ac94729d5cb2b7a0132
   And Ilk satirda soyad "Kulta" gorunur                                                                                                                               # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSoyadGorunur(java.lang.String)
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
   And Ilk satirda kaynak "Website" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
     Embedding 2a2 - Gelen SMS onaysiz, isim ayni, kulup ayni, mevcut SMS onayLI, atanmamis, gorev var/yok [image/png 55345 bytes]
@@ -797,8 +797,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5976018199|steps: PhoneNumber
-  And Ilk satirda tags "steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5976018199|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -839,8 +839,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5927438266|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5927438266|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -881,8 +881,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5967849560|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5967849560|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -973,8 +973,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                  # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5992174692|Steps: Clubs
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5992174692|Adım: Clubs
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                             # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1015,8 +1015,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                         # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5962248011|Steps: PhoneNumber
-  And Ilk satirda tags "steps: Success" gorunur                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5962248011|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: Success" gorunur                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                              # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1024,7 +1024,7 @@ DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
 
       java.lang.AssertionError: 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'steps: Success' | Gercek: 'Steps: PhoneNumber'
+1) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -1099,8 +1099,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5911410906|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5911410906|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1141,8 +1141,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5951575236|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5951575236|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1184,8 +1184,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5965508270|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5965508270|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1227,8 +1227,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5978834771|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5978834771|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1270,8 +1270,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5989861456|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5989861456|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1313,8 +1313,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                  # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5986339674|Steps: Clubs
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5986339674|Adım: Clubs
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                             # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1354,8 +1354,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5937272822|Steps: Information
-  And Ilk satirda tags "Steps: Information" gorunur                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5937272822|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1402,7 +1402,7 @@ DEBUG Kulup actual = 42 Maslak
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
 TAGS_ACTUAL|5948716376|
-  And Ilk satirda tags "Steps: Success" gorunur                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+  And Ilk satirda tags "Adım: Success" gorunur                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = AVM Etkinli�i
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                  # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1410,7 +1410,7 @@ DEBUG Kaynak actual = AVM Etkinli�i
 
       java.lang.AssertionError: 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Success' | Gercek: ''
+1) Tags beklenen: 'Adım: Success' | Gercek: ''
 2) Kaynak beklenen: 'Ücretsiz Ölçüm' | Gercek: 'AVM Etkinliği'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
@@ -1445,8 +1445,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5948388028|steps: Information
-  And Ilk satirda tags "Steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5948388028|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1486,8 +1486,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5963569928|Steps: Information
-  And Ilk satirda tags "Steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5963569928|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1527,8 +1527,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                 # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5918270023|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5918270023|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1568,8 +1568,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5957512714|steps: Information
-  And Ilk satirda tags "steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5957512714|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1710,8 +1710,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "test.st5" gorunur                                                                                                                  # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5941868426|Steps: Clubs
-  And Ilk satirda tags "Steps: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5941868426|Adım: Clubs
+  And Ilk satirda tags "Adım: Clubs" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                             # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1752,8 +1752,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5912979464|Steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5912979464|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1844,8 +1844,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5955381474|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5955381474|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1901,7 +1901,7 @@ Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goo
   And Ilk satirda soyad "Brandium" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSoyadGorunur(java.lang.String)
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
       org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
 Build info: version: '4.28.0', revision: 'ac342546e9'
@@ -1955,8 +1955,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = test.st5
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5969949514|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5969949514|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -1967,7 +1967,7 @@ DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
 1) Ad beklenen: 'Katalon' | Gercek: 'Ela'
 2) Soyad beklenen: 'Brandium' | Gercek: 'Kulta'
 3) Satis Temsilcisi beklenen: 'System' | Gercek: 'test.st5'
-4) Tags beklenen: 'Steps: Success' | Gercek: 'Steps: PhoneNumber'
+4) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -2006,8 +2006,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5925430532|steps: Success
-  And Ilk satirda tags "steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5925430532|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2147,8 +2147,8 @@ DEBUG Kulup actual = 42 Maslak
   And Ilk satirda kulup "42 Maslak" gorunur                                                                                                                            # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5934573870|Steps: Addon
-  And Ilk satirda tags "Steps: Addon" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5934573870|Adım: Addon
+  And Ilk satirda tags "Adım: Addon" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Website
   And Ilk satirda kaynak "Website" gorunur                                                                                                                             # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2282,8 +2282,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5983660179|steps: Information
-  And Ilk satirda tags "Steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5983660179|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2371,8 +2371,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5915408222|steps: Information
-  And Ilk satirda tags "Steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5915408222|Adım: Information
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2414,8 +2414,8 @@ DEBUG Kulup actual = Flatofis Hali�
   And Ilk satirda kulup "Flatofis Haliç" gorunur                                                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5919151065|Steps: PhoneNumber
-  And Ilk satirda tags "Steps: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5919151065|Adım: PhoneNumber
+  And Ilk satirda tags "Adım: PhoneNumber" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2650,8 +2650,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5931387356|steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5931387356|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2694,8 +2694,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5953307355|Steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5953307355|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2737,8 +2737,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5941063940|steps: Success
-  And Ilk satirda tags "Steps: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5941063940|Adım: Success
+  And Ilk satirda tags "Adım: Information" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                     # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2746,7 +2746,7 @@ DEBUG Kaynak actual = �cretsiz �l��m
 
       java.lang.AssertionError: 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Information' | Gercek: 'steps: Success'
+1) Tags beklenen: 'Adım: Information' | Gercek: 'Adım: Success'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -2786,8 +2786,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                          # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                   # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5918006140|Steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5918006140|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                       # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = Web Form - G�nl�k �yelik Kampanyas�
   And Ilk satirda kaynak "Web Form - Günlük Üyelik Kampanyası" gorunur                                                                                                # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2878,8 +2878,8 @@ DEBUG Kulup actual = Altunizade
   And Ilk satirda kulup "Altunizade" gorunur                                                                                                                           # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKulupGorunur(java.lang.String)
 DEBUG Satis Temsilcisi actual = System
   And Ilk satirda satis temsilcisi "System" gorunur                                                                                                                    # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaSatisTemsilcisiGorunur(java.lang.String)
-TAGS_ACTUAL|5968248364|steps: Success
-  And Ilk satirda tags "Steps: Success" gorunur                                                                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
+TAGS_ACTUAL|5968248364|Adım: Success
+  And Ilk satirda tags "Adım: Success" gorunur                                                                                                                        # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaTagsGorunur(java.lang.String)
 DEBUG Kaynak actual = �cretsiz �l��m
   And Ilk satirda kaynak "Ücretsiz Ölçüm" gorunur                                                                                                                      # com.macfit.steps.LeadYonetimi.LeadPortalFlowSteps.ilkSatirdaKaynakGorunur(java.lang.String)
 
@@ -2947,7 +2947,7 @@ Session ID: be646eb2ba132ac94729d5cb2b7a0132
 java.lang.AssertionError: 
 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'steps: Success' | Gercek: 'Steps: PhoneNumber'
+1) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -2955,7 +2955,7 @@ java.lang.AssertionError:
 java.lang.AssertionError: 
 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Success' | Gercek: ''
+1) Tags beklenen: 'Adım: Success' | Gercek: ''
 2) Kaynak beklenen: '�cretsiz �l��m' | Gercek: 'AVM Etkinli�i'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
@@ -3009,7 +3009,7 @@ java.lang.AssertionError:
 1) Ad beklenen: 'Katalon' | Gercek: 'Ela'
 2) Soyad beklenen: 'Brandium' | Gercek: 'Kulta'
 3) Satis Temsilcisi beklenen: 'System' | Gercek: 'test.st5'
-4) Tags beklenen: 'Steps: Success' | Gercek: 'Steps: PhoneNumber'
+4) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -3017,7 +3017,7 @@ java.lang.AssertionError:
 java.lang.AssertionError: 
 
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Information' | Gercek: 'steps: Success'
+1) Tags beklenen: 'Adım: Information' | Gercek: 'Adım: Success'
 
 	at com.macfit.steps.Hooks.end(Hooks.java:54)
 
@@ -3027,11 +3027,11 @@ java.lang.AssertionError:
 [ERROR] Failures: 
 [ERROR]   
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'steps: Success' | Gercek: 'Steps: PhoneNumber'
+1) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 [ERROR]   
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Success' | Gercek: ''
+1) Tags beklenen: 'Adım: Success' | Gercek: ''
 2) Kaynak beklenen: '�cretsiz �l��m' | Gercek: 'AVM Etkinli�i'
 
 [ERROR]   
@@ -3039,11 +3039,11 @@ java.lang.AssertionError:
 1) Ad beklenen: 'Katalon' | Gercek: 'Ela'
 2) Soyad beklenen: 'Brandium' | Gercek: 'Kulta'
 3) Satis Temsilcisi beklenen: 'System' | Gercek: 'test.st5'
-4) Tags beklenen: 'Steps: Success' | Gercek: 'Steps: PhoneNumber'
+4) Tags beklenen: 'Adım: Success' | Gercek: 'Adım: PhoneNumber'
 
 [ERROR]   
 --- SOFT ASSERTION FAILURES ---
-1) Tags beklenen: 'Steps: Information' | Gercek: 'steps: Success'
+1) Tags beklenen: 'Adım: Information' | Gercek: 'Adım: Success'
 
 [ERROR] Errors: 
 [ERROR]   stale element reference: stale element not found in the current frame
